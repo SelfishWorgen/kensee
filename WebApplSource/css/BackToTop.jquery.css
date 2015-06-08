@@ -1,0 +1,22 @@
+#BackToTop {
+    float: left;
+    display: none;
+    color: #eee !important;
+    text-decoration: none;
+    font: bold 14px Arial,Helvetica;
+    position: fixed;
+    bottom: 30px;
+    right: 0px;
+    z-index: 1000;
+    width: 24px;
+    height: 110px;
+    background: url(../img/back_top.gif) no-repeat;
+}
+
+#BackToTop span
+{
+    display: none;
+    padding: 4px 15px;
+    cursor: pointer;
+    background-color: #63BB17;
+}

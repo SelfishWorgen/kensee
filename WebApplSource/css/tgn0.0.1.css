@@ -1,0 +1,255 @@
+.hub-content {background: none repeat scroll 0 0 transparent;overflow: hidden;padding: 10px;}
+.article { background: white!important; }
+.column1 { float: left;margin-bottom: 0; margin-left: 2em;min-height: 25em; width: 11em;}
+	.hub-content .column1:first-child {margin-left:0;}
+.column2 { width: 23em; min-height: 25em; float: left; margin-left: 1em; }
+.column3 { width: 35em; min-height: 25em; float: left; margin-left: 1em; }
+@media only screen and (device-width: 768px) and (orientation: portrait) /* for bugs 703 and 702 */
+{
+.column3 img, .column3 iframe { max-width: 100%; }   
+}
+.column4 { width: 47em; min-height: 25em; float: left; margin-left: 1em; }
+.column5 { width: 59em; min-height: 25em; float: left; margin-left: 1em; }
+.column1 .image img {  border: 3px solid #FFFFFF; box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); width: 97%; height: auto; } /* to fix bug 692 */
+.column1 .image a:hover > img { box-shadow:0 0 10px rgba(86,178,5,1); } /* to fix bug 692 */
+
+.column1 .price {margin-bottom:10px;}
+.column1 .price span {font-size:17px; font-weight:bold; color:#313131;}
+	.column1 .price .ooratings a {display:block; background:url('../img/oo_rating_loop.png') 0 50% no-repeat; padding-left:20px; color:#313131;}
+	.column1 .price .ooratings a:hover {color:#313131 !important;}
+
+/*.column1 img { height: auto; } /*to fix bug 692*/
+
+.standard .image, .main .image { font-size: 1em; margin: 0 -0.5em; display: block; line-height: 0; }/* removed 0.325em margin-bottom;min-height: 0.325em; */
+.standard .date, .book .date { font: normal 0.625em Arial, Helvetica, sans-serif; color: #777; padding-bottom: 0.5em; *height: 1.5em; }
+.standard h1 { font: bold .8em Arial, Helvetica, sans-serif; color: #333; padding: 0.5em 0 0.6em; letter-spacing: 0.035em; line-height: 1.1em; }
+a:hover h1 { color: #363636; }
+
+/*
+.standard a:active * { color: #ccc; }
+.standard a:active h1 { color: #f9bf91; }
+*/
+
+.main .date, .main .caption { font-size: 0.625em; color: #999!important; }
+.main .caption { background: #ebebeb; padding: .425em .675em;  margin: -.55em -0.8em 1em !important; }
+.main .videocaption { background: #ebebeb; padding: .425em .675em; margin-bottom: 1em; font-size: 0.625em; color: #999!important; } 
+.main cite { margin-bottom: .5em; display: block; }
+
+/* BASIC HOME */
+section{ background: transparent; }
+article.standard, .book { font-size: 1em; margin-bottom: 1em; background: white; }
+article.standard:hover{ border-bottom: 0.25em solid #e78126 }
+article.standard a img{ padding:0 0 0 0; } /* for the IE7 <p> link bug*/
+
+/*
+article.book { font-size: 1em; margin-bottom: 0.325em; background: #fff; padding: 0 9px 0; }
+article.book .date { font: normal 0.625em Arial, Helvetica, sans-serif; color: #777; margin-bottom: 0.5em; *height: 1.5em; }
+article.book h1 { font: bold .825em Arial, Helvetica, sans-serif; color: #333; padding: 0.325em 9px 1em; margin: 0 -0.6em; line-height: 1.1em; border-bottom: 0.25em solid white; }
+article.book a:hover h1 { border-bottom: 0.25em solid #e78126; background: url(../img/arrow-hover.gif) no-repeat 12.125em 0.5em;}
+*/
+
+.book .image { font-size: 1em; margin: 5px; line-height: 0; }
+.book .pad { padding: 10px; background: #ebebeb; margin: 0 -0.5em;} 
+.book .pad .dd { margin-bottom: 0.5em; }
+.book .pad .bing { border-color: #ebebeb!important; }
+.book .close { width: 100%; display: block; background: url(../img/tab-why.png) no-repeat 174px -46px; outline: none; text-indent: -9999px; } 
+.book .bing { display: block; border-top: 8px solid white; border-bottom: 1em solid white; }
+.book .bing a { border: 1px solid #999; padding: 0.4em 0.5em 0.2em; color: #777; outline: none; text-transform: uppercase; font-size: 0.8em; }
+.book .bing a:hover { border: 1px solid #e78126; color: #e78126; }
+
+.book .title {font-size:14px; font-weight:bold; line-height:normal; margin:0;}
+
+/*Book preview, remove border and padding*/
+.book.photoIncluded, .book.photoIncluded:hover{padding-bottom:0; border-bottom:0 none;}
+
+.columnhead .h3 { padding: 0 0.5em 0.3em 0.5em; background: white; vertical-align: top; position: relative; }
+.columnhead .h3 h3  { font: bold .9em Arial, Helvetica, sans-serif; color: #333; margin:0; padding:0; }
+.columnhead .h3 a h3  { font: bold .9em Arial, Helvetica, sans-serif; color: #333; text-decoration: none; margin:0; padding:0; background: url(../img/arrow.gif) no-repeat top right; }
+.columnhead .h3 a:hover h3 {  background: url(../img/arrow-hover.gif) no-repeat top right; color: #e78126; }
+.article .columnhead .spacer { display: none; }
+.article .columnhead .h3 { padding: 0 0.5em 0.8em; }
+
+
+/*** For listin page ********/
+
+.background {
+	background-image:url("../img/background.jpg");
+	height:238px;
+	margin-bottom:25px;
+	position: relative;
+}
+	.background h2 {
+		color: #FFFFFF;
+		font-size: 46px;
+		left: 30px;		
+		bottom: 30px;
+		position: absolute;
+		margin:0;
+	}
+		.background h2 span {font-size:24px; font-weight:normal;}
+
+.topic{margin-bottom:25px; background:url(../img/chapter-headline-border.gif) bottom repeat-x; padding-bottom:30px;}
+	.topic span a { text-decoration:underline; color:#8ad214; }
+	
+	.topic h2 {margin:0; padding:0; float:left; background:url(../img/chapter-headline-bullet.gif) 0 50% no-repeat; padding-left:60px;}
+		.topic h2 span {color:#8ad214;}
+			.topic h2 span span {color:#a1a1a1; font-weight:normal; padding:0 3px;}
+
+	.topic li a
+	{
+		padding:5px 12px;
+		font-size: 17px;
+	}
+	.topic li a:hover,
+	.topic li a.active
+	{
+		position:relative;
+		background-color:#8ad214;
+		color:#fff !important;
+		text-decoration:none;
+		border-radius:5px;
+	}
+
+.topic ul
+{
+	list-style-type: none;
+	float:right;
+	margin-top:10px;
+}
+	.topic li
+	{
+		list-style:inline;
+		font-weight:bold;
+		display:inline;
+	}
+	
+
+.events .block {
+	border-bottom:1px dotted #cccccc;
+	margin:0 auto;
+	margin-top:20px;
+	width:780px;
+	padding-bottom:30px;
+	padding-left:25px;
+}
+	.events .block .description {border:none; float:left}
+		.events .block .description h2
+		{
+			color: #56B205;
+			font-family: "PT Sans",sans-serif;
+			font-size: 26px;
+			font-weight: bold;
+			margin:0;
+		}
+		.events .block .description p {margin:0; padding:0; line-height:1.4em; font-size:19px;}
+		.events .block .description a {color: #56B205;}
+			.events .block .description a:hover {text-decoration:underline;}
+		
+	.events .block h3 {font-size:20px; margin:0; margin-bottom:25px; margin-left:-25px; line-height:normal;}
+	 
+	.events .image_thumb {width:23%; height:auto;}
+		.events .image_thumb img {max-height:185px;max-width:150px;}
+		
+#chapter_menu ul {margin-left:15px !important; margin-top:10px;}
+	#account_profile ul#chapter_menu ul a {padding:5px !important; color:#464646 !important; font-size:16px !important;}
+		#account_profile ul#chapter_menu ul a:hover {color:#56b205 !important;}
+		
+		#chapter_menu ul li {background:url(../img/chapter-bullet.gif) 0 50% no-repeat; padding-left:7px;}
+		
+.recently_added {padding:10px; margin-top:10px; font-size:14px; line-height:normal;}
+	.recently_added h3 {}
+
+.book {position:relative; overflow:hidden;}
+	
+.book .book-info {font-size: 13px;
+    line-height: normal;
+    position: absolute;
+    /* width: 178px; */
+    top: 0px;
+	background:#FFF;
+    background: rgba(255,255,255,0.9);
+	opacity:0; filter:alpha(opacity=0);
+    left: 0;
+    padding: 0 10px;
+	height:96%;
+	overflow:hidden;
+	color:#363636;
+	z-index:100;
+	margin:5px;
+}
+	.book .book-info .price {
+		position: absolute;
+		bottom: 30px;
+		text-align: right;
+		right: 10px;
+		font-size:18px;
+		background:url(../img/book-icon.png) 0 50% no-repeat;
+		padding-left:30px;
+	}
+	
+	.book .book-info .author {color:#3776aa;}
+	.book .book-info .description span {font-style:italic;}
+
+	.book h1 {font-size:18px; line-height:normal; margin:0; padding:5px 0 0; color:#363636;}
+	
+.book .book-rating {
+    position: absolute;
+    bottom: 8px;
+	background:#000;
+    background: rgba(0,0,0,0.75);
+    left: 8px;
+    width: 172px;
+    padding: 5px;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+	z-index:150;
+	height:20px;
+	overflow:hidden;
+}
+	.book .book-rating .rating_block {
+		position: absolute;
+		right: 3px;
+		top: 3px;
+		min-width:95%;
+	}
+	
+	.book .book-rating .price {font-size:18px; font-weight:bold;}
+	
+	.rating_stars {width:100%; text-align:right;}
+
+	.book .book-rating .ooratings {background:url('../img/oo_rating_loop_wt.png') 0 50% no-repeat; padding-left:20px; z-index:100;}
+	
+	
+.article {border:1px solid #eee; background:#f6f6f6 !important; padding:5px; font-size:13px; line-height:normal !important; font-family:Arial, Helvetica, sans-serif; margin-bottom:20px;}
+	.article h1 {font-size:14px; line-height:normal; margin:0; padding:5px 0 0; color:#363636;}
+	.article .source {font-size:12px; color: #858585; margin:5px 0 10px;}
+	.article .link {width:auto;}
+	.article .link a, .article a {color:#5082a5;}
+	
+	.article iframe, .article .image img {width:100%; height:auto; border:none; box-shadow:none;}
+	
+.articles .column1, .products .column1 {width:30%;}
+
+	.products .image_block {text-align:center;}
+		.products .image_block img {padding:5px; border:1px solid #eee; background:#FFF; max-width:85%;}
+		
+		.products h1 {margin-bottom:15px;}
+
+.sub_list .current_section {font-weight:bold; text-decoration:underline; color:#56b205 !important;}
+#account_profile ul#chapter_menu ul a.current_section { color:#56b205 !important;}
+
+.hub-profile {font-size:14px; line-height:normal;}
+	.hub-profile #img-box1 {float:left; width:150px;}
+	.hub-profile #para-box1 {margin-left:15px; width:760px;}
+	.hub-profile h1 {font-size:20px; margin:0; line-height:normal;}
+	.hub-profile p {margin-top:0;}
+	
+	.hub-profile a {color:#3883ad;}
+	
+.hub-listings {padding:10px 0; border-top:1px solid #CCC; margin-top:15px;}
+
+	#account_profile ul#chapter_menu ul a.current_chapter {color:#c8c8c8 !important; }
+	
+	.info {font-size:12px !important; line-height:normal !important; padding-top:25px; padding-bottom:10px; font-weight:normal !important;}
+		#account_profile ul#chapter_menu ul .info a {display:inline !important; font-size:12px !important; padding:0 !important; color:#3979a7 !important;}
