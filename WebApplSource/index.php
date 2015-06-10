@@ -289,7 +289,9 @@
 				$sortkey = 'event';
 			else if ($sort == '5')
 				$sortkey = 'country';
-
+			else if ($sort == '6')
+				$sortkey = 'sentiment';
+                
 			$up_down_key = '';
 			if ($up_down == '2')
 				$up_down_key = 'asc';
@@ -391,7 +393,7 @@
                         $html .= ' checked';
                     $html .= ' id="chk_5_'.$item['id'].'"/></td>';
                     $html .= '<td valign="top">'.$item['dtt'].'</td><td valign="top"><a href="javascript:void(0);" onclick="show_content('.$item['id'].');">'.$item['news_title'].'</a></td>';
-					$html .= '<td valign="top">'.$item['site'].'</td><td valign="top">'.$item['event'].'</td><td valign="top">'.$item['country'].'</td>';
+					$html .= '<td valign="top">'.$item['site'].'</td><td valign="top">'.$item['event'].'</td><td valign="top">'.$item['country'].'</td><td valign="top">'.$item['sentiment'].'</td>';
                     foreach($uClmnData as $item1)
                     {
                         $u_clmn_data_sql = 'select * from tb_user_data where news_id = '.$item['id'] .' and column_id = '.$item1['id'];
@@ -870,14 +872,16 @@
 				$sortkey = 'event';
 			else if ($sort == '5')
 				$sortkey = 'country';
-
+            else if ($sort == '6')
+				$sortkey = 'sentiment';
+                
 			$up_down_key = '';
 			if ($up_down == '2')
 				$up_down_key = 'asc';
 			else if ($up_down == '1')
 				$up_down_key = 'desc';
 
-			$sql = 'select id, news_title, news_date, news_url, company_name, event, country, sector  from tb_news where '.$subwhere.' and news_title<>"" and news_title like "%'.$keyword.'%" ';
+			$sql = 'select id, news_title, news_date, news_url, company_name, event, country, sector, sentiment from tb_news where '.$subwhere.' and news_title<>"" and news_title like "%'.$keyword.'%" ';
 //           	$sql = 'select news_title, news_date, company_name, event, country  from tb_news where news_title<>"" and news_title like "%'.$keyword.'%" ';
             
             if (count($checkedRows) > 0)
@@ -980,6 +984,9 @@
 
 <link rel="icon" type="image/jpg" href="<?php echo $SITEURL; ?>/images/Kensee_Favicon.png">
 
+<!-- Load c3.css -->
+<link href="<?php echo $SITEURL; ?>/css/c3.css" rel="stylesheet" type="text/css">
+
 <script type="text/javascript" async="" src="http://www.google-analytics.com/plugins/ga/inpage_linkid.js" id="undefined"></script><script type="text/javascript" async="" src="http://stats.g.doubleclick.net/dc.js"></script><script type="text/javascript" src="<?php echo $SITEURL; ?>/js/jquery.js"></script>
 
 <script type="text/javascript" src="<?php echo $SITEURL; ?>/js/jquery-ui.js"></script>
@@ -989,6 +996,10 @@
 <script type="text/javascript" src="<?php echo $SITEURL; ?>/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="<?php echo $SITEURL; ?>/js/jquery.jcarousel.min.js"></script>
+
+<!-- Load d3.js and c3.js -->
+<script src="<?php echo $SITEURL; ?>/js/d3.v3.min.js" charset="utf-8"></script>
+<script src="<?php echo $SITEURL; ?>/js/c3.min.js"></script>
 
 <script type="text/javascript">
 
@@ -1123,7 +1134,7 @@
 	}
 
 	.arrow-up {
-		top:208px;
+		top:168px;
 		width: 0; 
 		height: 0; 
 		border-left: 7px solid transparent;
@@ -1134,7 +1145,7 @@
 	}
 
 	.arrow-up-color {
-		top:208px;
+		top:168px;
 		width: 0; 
 		height: 0; 
 		border-left: 7px solid transparent;
@@ -1145,7 +1156,7 @@
 	}
 
 	.arrow-up:hover {
-		top:208px;
+		top:168px;
 		width: 0; 
 		height: 0; 
 		border-left: 7px solid transparent;
@@ -1156,7 +1167,7 @@
 	}
 
 	.arrow-down {
-		top:208px;
+		top:168px;
 		width: 0; 
 		height: 0; 
 		border-left: 7px solid transparent;
@@ -1166,7 +1177,7 @@
 		position:absolute;
 	}
 	.arrow-down:hover {
-		top:208px;
+		top:168px;
 		width: 0; 
 		height: 0; 
 		border-left: 7px solid transparent;
@@ -1177,7 +1188,7 @@
 	}
 
 	.arrow-down-color {
-		top:208px;
+		top:168px;
 		width: 0; 
 		height: 0; 
 		border-left: 7px solid transparent;
@@ -1354,9 +1365,9 @@ function check()
     
     var userColumns = jQuery.parseJSON($('#userColumns').val());
     if (userColumns != null ) //&& userColumns.length != 0)
-        document.getElementById('head6').style.display = 'inline';
+        document.getElementById('head7').style.display = 'inline';
     else
-        document.getElementById('head6').style.display = 'none';
+        document.getElementById('head7').style.display = 'none';
                                                 
 	$.ajax({
 		type: "POST", 
@@ -1493,12 +1504,12 @@ function processJson(data)
     var userColumns = jQuery.parseJSON($('#userColumns').val());
     if (userColumns != null && userColumns.length != 0)
     {
-        document.getElementById('head6').style.display = 'inline';
-        $('#head6').html('<a href="javascript:void(0);" onclick="openUserColumn(1);">' + userColumns[0] + '</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort(\'6\');"></div>');
+        document.getElementById('head7').style.display = 'inline';
+        $('#head7').html('<a href="javascript:void(0);" onclick="openUserColumn(1);">' + userColumns[0] + '</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort(\'7\');"></div>');
     }
     else
     {
-        document.getElementById('head6').style.display = 'none';
+        document.getElementById('head7').style.display = 'none';
     }
     
     
@@ -1532,7 +1543,7 @@ function processJson(data)
     {
         $('#chk_page').removeAttr('checked');
     }
-}
+ }
 
 function prevPage()
 {
@@ -1681,7 +1692,8 @@ function sort(val)
 	$('#head3').html('<a href="javascript:void(0);" onclick="openFilter(\'3\');">Source</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort(\'3\');"></div>');
 	$('#head4').html('<a href="javascript:void(0);" onclick="openFilter(\'4\');">Event</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort(\'4\');"></div>');
 	$('#head5').html('<a href="javascript:void(0);" onclick="openFilter(\'5\');">Country</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort(\'5\');"></div>');
-
+	$('#head6').html('<a href="javascript:void(0);" onclick="openFilter(\'6\');">Sentiment</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort(\'6\');"></div>');
+    
 	if (val == '1')
 		$('#head' + val).html('<span style="font-weight:bold; color:#00A2E8"><a href="javascript:void(0);" onclick="openFilter(\'1\');">Date</a></span>&nbsp;&nbsp;<div class="' + tri_cls + '" onclick="sort(\'1\');"></div>');
 	else if (val == '2')
@@ -1692,6 +1704,8 @@ function sort(val)
 		$('#head' + val).html('<span style="font-weight:bold; color:#00A2E8"><a href="javascript:void(0);" onclick="openFilter(\'4\');">Event</a></span>&nbsp;&nbsp;<div class="' + tri_cls + '" onclick="sort(\'4\');"></div></a>');
 	else if (val == '5')
 		$('#head' + val).html('<span style="font-weight:bold; color:#00A2E8"><a href="javascript:void(0);" onclick="openFilter(\'5\');">Country</a></span>&nbsp;&nbsp;<div class="' + tri_cls + '" onclick="sort(\'5\');"></div></a>');
+	else if (val == '6')
+		$('#head' + val).html('<span style="font-weight:bold; color:#00A2E8"><a href="javascript:void(0);" onclick="openFilter(\'6\');">Sentiment</a></span>&nbsp;&nbsp;<div class="' + tri_cls + '" onclick="sort(\'6\');"></div></a>');
 
 	$('#sort').val(val);
 	$('#cur_pg').val('1');
@@ -1830,7 +1844,10 @@ function openFilter(val)
 		if (flag == '1')
 			$('#chk_all4').attr('checked', 'checked');
 	}
-
+    else if (val == '6') // Sentiment
+	{
+	   return;
+	}
 	var x = $('#head' + val).offset();
 	console.log(x);
 	//$('.sb_dropdown').offset({ top: x.top, left: x.left });
@@ -2501,6 +2518,7 @@ function export_excel()
 										<label for="chk_industry2" style="display:inline; font-size:15px">&nbsp;&nbsp;Publications</label>
 									</div>
 									-->
+                                    <div id="chart"></div>
 									<div class="clear"></div>
 									<div style="margin-top:10px; width:100%">
 										<table width="100%" cellpadding="10" id="pg_Nav" cellspacing="0" style=" font-size:15px;">
@@ -2521,8 +2539,11 @@ function export_excel()
 													<th class="bsorttable_nosort1" style="width:14%; cursor:pointer;" id="head5"><a href="javascript:void(0);" onclick="openFilter('5');">Country</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
 													<div class="arrow-up" onclick="sort('5');"></div>
 													</th>
-                                                    <th class="bsorttable_nosort1" style="display:none; width:14%; cursor:pointer;" id="head6"><a href="javascript:void(0);" onclick="openUserColumn('1');">User column</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
+                                                    <th class="bsorttable_nosort1" style="width:14%; cursor:pointer;" id="head6"><a href="javascript:void(0);" onclick="openFilter('6');">Sentiment</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
 													<div class="arrow-up" onclick="sort('6');"></div>
+													</th>
+                                                    <th class="bsorttable_nosort1" style="display:none; width:14%; cursor:pointer;" id="head7"><a href="javascript:void(0);" onclick="openUserColumn('1');">User column</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
+													<div class="arrow-up" onclick="sort('7');"></div>
 													</th>
 												</tr>
 											</thead>

@@ -34,7 +34,8 @@
 						->setCellValue('B1', 'Country')
 						->setCellValue('C1', 'Event')
 						->setCellValue('D1', 'HeadLine')
-						->setCellValue('E1', 'URL');
+                       	->setCellValue('E1', 'Sentiment')
+						->setCellValue('F1', 'URL');
     }
     else
     {
@@ -43,8 +44,9 @@
 						->setCellValue('B1', 'Country')
 						->setCellValue('C1', 'Event')
 						->setCellValue('D1', 'HeadLine')
-						->setCellValue('E1', $uClmnData[0]['column_name'])
-						->setCellValue('F1', 'Url');
+						->setCellValue('E1', 'Sentiment')
+                        ->setCellValue('F1', $uClmnData[0]['column_name'])
+						->setCellValue('G1', 'Url');
     }
     
 
@@ -59,6 +61,7 @@
 		$event = $item['event'];
 		$country = $item['country'];
 		$sector = $item['sector'];
+        $sentiment = $item['sentiment'];
 
         if (count($uClmnData) == '0')
         {
@@ -67,7 +70,8 @@
 						->setCellValue('B'.$k, $country)
 						->setCellValue('C'.$k, $event)
 						->setCellValue('D'.$k, $news_title)
-						->setCellValue('E'.$k, $news_url);
+						->setCellValue('E'.$k, $sentiment)
+                        ->setCellValue('F'.$k, $news_url);
         }
         else
         {
@@ -82,8 +86,9 @@
 						->setCellValue('B'.$k, $country)
 						->setCellValue('C'.$k, $event)
 						->setCellValue('D'.$k, $news_title)
-                        ->setCellValue('E'.$k, $txt)
-                        ->setCellValue('F'.$k, $news_url);
+                        ->setCellValue('E'.$k, $sentiment)
+                        ->setCellValue('F'.$k, $txt)
+                        ->setCellValue('G'.$k, $news_url);
         }
 	}
 
