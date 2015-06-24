@@ -138,17 +138,17 @@
 		if ($postflag == '1')
 		{
 			//REMOVING DUPLICATES
-			$sql = 'DELETE tb_news FROM tb_news
-			LEFT OUTER JOIN (
-			   SELECT MIN(id) as RowId, news_url
-			   FROM tb_news
-			   GROUP BY news_url
-			) as KeepRows ON
-			   tb_news.id = KeepRows.RowId
-			WHERE
-			   KeepRows.RowId IS NULL';
+//			$sql = 'DELETE tb_news FROM tb_news
+//			LEFT OUTER JOIN (
+//			   SELECT MIN(id) as RowId, news_url
+//			   FROM tb_news
+//			   GROUP BY news_url
+//			) as KeepRows ON
+//			   tb_news.id = KeepRows.RowId
+//			WHERE
+//			   KeepRows.RowId IS NULL';
 
-		   mysql_query($sql);
+//		   mysql_query($sql);
 
 			$industry1 = $_POST['industry1'];
 			$industry2 = $_POST['industry2'];
@@ -291,7 +291,10 @@
 				$sortkey = 'country';
 			else if ($sort == '6')
 				$sortkey = 'sentiment';
-                
+            else if ($sort == '7')
+                return;
+			//	$sortkey = 'sentiment';
+			
 			$up_down_key = '';
 			if ($up_down == '2')
 				$up_down_key = 'asc';
@@ -874,7 +877,8 @@
 				$sortkey = 'country';
             else if ($sort == '6')
 				$sortkey = 'sentiment';
-                
+            else if ($sort == '7')
+				return;
 			$up_down_key = '';
 			if ($up_down == '2')
 				$up_down_key = 'asc';
@@ -984,7 +988,6 @@
 
 <link rel="icon" type="image/jpg" href="<?php echo $SITEURL; ?>/images/Kensee_Favicon.png">
 
-<!-- Load c3.css -->
 <link href="<?php echo $SITEURL; ?>/css/c3.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" async="" src="http://www.google-analytics.com/plugins/ga/inpage_linkid.js" id="undefined"></script><script type="text/javascript" async="" src="http://stats.g.doubleclick.net/dc.js"></script><script type="text/javascript" src="<?php echo $SITEURL; ?>/js/jquery.js"></script>
@@ -997,9 +1000,9 @@
 
 <script type="text/javascript" src="<?php echo $SITEURL; ?>/js/jquery.jcarousel.min.js"></script>
 
-<!-- Load d3.js and c3.js -->
-<script src="<?php echo $SITEURL; ?>/js/d3.v3.min.js" charset="utf-8"></script>
-<script src="<?php echo $SITEURL; ?>/js/c3.min.js"></script>
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="<?php echo $SITEURL; ?>/js/c3.js"></script>
 
 <script type="text/javascript">
 
@@ -1134,7 +1137,7 @@
 	}
 
 	.arrow-up {
-		top:168px;
+ 	top:168px;
 		width: 0; 
 		height: 0; 
 		border-left: 7px solid transparent;
@@ -1505,7 +1508,7 @@ function processJson(data)
     if (userColumns != null && userColumns.length != 0)
     {
         document.getElementById('head7').style.display = 'inline';
-        $('#head7').html('<a href="javascript:void(0);" onclick="openUserColumn(1);">' + userColumns[0] + '</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort(\'7\');"></div>');
+        $('#head7').html('<a href="javascript:void(0);" onclick="openUserColumn(1);">' + userColumns[0] + '</a>&nbsp;&nbsp');
     }
     else
     {
@@ -1543,6 +1546,17 @@ function processJson(data)
     {
         $('#chk_page').removeAttr('checked');
     }
+    
+//    var chart = c3.generate({
+//    bindto: '#chart',
+//    data: {
+//      columns: [
+//        ['positive', 30, 200, 100, 400, 150, 250],
+//        ['negative', 50, 20, 10, 40, 15, 25],
+//        ['neutral', 5, 20, 10, 5, 15, 5]
+//      ]
+//    }
+//  });
  }
 
 function prevPage()
@@ -2294,7 +2308,7 @@ function delete_popup()
 
 function export_excel()
 {
-	var val1 = $('#col_ind').val();
+ 	var val1 = $('#col_ind').val();
 	var opt_chk1 = [];
 	var opt_chk2 = [];
 	var opt_chk3 = [];
@@ -2518,7 +2532,7 @@ function export_excel()
 										<label for="chk_industry2" style="display:inline; font-size:15px">&nbsp;&nbsp;Publications</label>
 									</div>
 									-->
-                                    <div id="chart"></div>
+                                    <!-- <div id="chart"></div>   168px -> 488 -->
 									<div class="clear"></div>
 									<div style="margin-top:10px; width:100%">
 										<table width="100%" cellpadding="10" id="pg_Nav" cellspacing="0" style=" font-size:15px;">
@@ -2526,24 +2540,24 @@ function export_excel()
 										<table width="100%" cellpadding="10" id="information" cellspacing="0" style="border:2px solid lightgray; font-size:15px; display:none">
 											<thead>
 												<tr style="font-size:16px; color:#636363;background:#C6C6C6;width:80%;">
-													<th class="bsorttable_nosort" style="width:20, weight:10;"><input type="checkbox" name="chk_page" id="chk_page" onclick="check_page();"></div></th>
-													<th class="bsorttable_nosort" style="width:15%; cursor:pointer;" id="head1"><a href="javascript:void(0);" onclick="openFilter('1');">Date</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link" onclick="openFilter('1');"></a>-->
+													<th class="bsorttable_nosort" style="width:18, weight:10;"><input type="checkbox" name="chk_page" id="chk_page" onclick="check_page();"></div></th>
+													<th class="bsorttable_nosort" style="width:13%; cursor:pointer;" id="head1"><a href="javascript:void(0);" onclick="openFilter('1');">Date</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link" onclick="openFilter('1');"></a>-->
 													<div class="arrow-up" onclick="sort('1');"></div>
 													</th>
-													<th class="bsorttable_nosort" style="width:36%; cursor:pointer;" id="head2"><a href="javascript:void(0);">HeadLine</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort('2');"></div></th>
-													<th class="bsorttable_nosort1" style="width:20%; cursor:pointer;" id="head3"><a href="javascript:void(0);" onclick="openFilter('3');">Source</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link1" onclick="openFilter('3');"></a>-->
+													<th class="bsorttable_nosort" style="width:34%; cursor:pointer;" id="head2"><a href="javascript:void(0);">HeadLine</a>&nbsp;&nbsp;<div class="arrow-up" onclick="sort('2');"></div></th>
+													<th class="bsorttable_nosort1" style="width:16%; cursor:pointer;" id="head3"><a href="javascript:void(0);" onclick="openFilter('3');">Source</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link1" onclick="openFilter('3');"></a>-->
 													<div class="arrow-up" onclick="sort('3');"></div>
 													</th>
-													<th class="bsorttable_nosort1" style="width:14%; cursor:pointer;" id="head4"><a href="javascript:void(0);" onclick="openFilter('4');">Event</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
+													<th class="bsorttable_nosort1" style="width:10%; cursor:pointer;" id="head4"><a href="javascript:void(0);" onclick="openFilter('4');">Event</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
 													<div class="arrow-up" onclick="sort('4');"></div>
-													<th class="bsorttable_nosort1" style="width:14%; cursor:pointer;" id="head5"><a href="javascript:void(0);" onclick="openFilter('5');">Country</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
+													<th class="bsorttable_nosort1" style="width:12%; cursor:pointer;" id="head5"><a href="javascript:void(0);" onclick="openFilter('5');">Country</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
 													<div class="arrow-up" onclick="sort('5');"></div>
 													</th>
                                                     <th class="bsorttable_nosort1" style="width:14%; cursor:pointer;" id="head6"><a href="javascript:void(0);" onclick="openFilter('6');">Sentiment</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
 													<div class="arrow-up" onclick="sort('6');"></div>
 													</th>
-                                                    <th class="bsorttable_nosort1" style="display:none; width:14%; cursor:pointer;" id="head7"><a href="javascript:void(0);" onclick="openUserColumn('1');">User column</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
-													<div class="arrow-up" onclick="sort('7');"></div>
+                                                    <th class="bsorttable_nosort1" style="display:none; width:10%; cursor:pointer;" id="head7"><a href="javascript:void(0);" onclick="openUserColumn('1');">User column</a>&nbsp;&nbsp;<!--<a href="javascript:void(0);" class="main_link2" onclick="openFilter('4');"></a>-->
+													<!-- <div class="arrow-up" onclick="sort('7');"></div> -->
 													</th>
 												</tr>
 											</thead>
