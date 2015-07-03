@@ -138,17 +138,17 @@
 		if ($postflag == '1')
 		{
 			//REMOVING DUPLICATES
-//			$sql = 'DELETE tb_news FROM tb_news
-//			LEFT OUTER JOIN (
-//			   SELECT MIN(id) as RowId, news_url
-//			   FROM tb_news
-//			   GROUP BY news_url
-//			) as KeepRows ON
-//			   tb_news.id = KeepRows.RowId
-//			WHERE
-//			   KeepRows.RowId IS NULL';
+			$sql = 'DELETE tb_news FROM tb_news
+			LEFT OUTER JOIN (
+			   SELECT MIN(id) as RowId, news_url
+			   FROM tb_news
+			   GROUP BY news_url
+			) as KeepRows ON
+			   tb_news.id = KeepRows.RowId
+			WHERE
+			   KeepRows.RowId IS NULL';
 
-//		   mysql_query($sql);
+		   mysql_query($sql);
 
 			$industry1 = $_POST['industry1'];
 			$industry2 = $_POST['industry2'];
@@ -172,12 +172,14 @@
 			$option2 = $_POST['option2'];
 			$option3 = $_POST['option3'];
 			$option4 = $_POST['option4'];
-			$optionKind = $_POST['optionKind'];
+			$option5 = $_POST['option5'];
+            $optionKind = $_POST['optionKind'];
 
 			$optionArr1 = json_decode($option1, true);
 			$optionArr2 = json_decode($option2, true);
 			$optionArr3 = json_decode($option3, true);
 			$optionArr4 = json_decode($option4, true);
+   			$optionArr5 = json_decode($option5, true);
 
             $checkedRows1 = $_POST['checkedRows'];
             $checkedRows = json_decode($checkedRows1, true);
@@ -228,6 +230,15 @@
 					$sql = substr($sql, 0, strlen($sql) - 3);
 					$sql .= ') and (';
 
+					foreach($optionArr5 as $key=>$val)
+					{
+						//$param_source = getTypeFromSitename($val);
+						$sql .= 'sentiment="'.$val.'" or ';
+					}
+
+					$sql = substr($sql, 0, strlen($sql) - 3);
+					$sql .= ') and (';
+                    
 					foreach($optionArr4 as $key=>$val)
 					{
 						//$param_source = getTypeFromSitename($val);
@@ -346,6 +357,15 @@
 					$sql = substr($sql, 0, strlen($sql) - 3);
 					$sql .= ') and (';
 
+                    foreach($optionArr5 as $key=>$val)
+					{
+						//$param_source = getTypeFromSitename($val);
+						$sql .= 'sentiment="'.$val.'" or ';
+					}
+
+					$sql = substr($sql, 0, strlen($sql) - 3);
+					$sql .= ') and (';
+                    
 					foreach($optionArr4 as $key=>$val)
 					{
 						//$param_source = getTypeFromSitename($val);
@@ -394,7 +414,7 @@
                     $html .= '<td valign="top" style="weight:10;"><input type="checkbox"';
                     if (count($checkedRows) != '0' && in_array($item['id'], $checkedRows))
                         $html .= ' checked';
-                    $html .= ' id="chk_5_'.$item['id'].'"/></td>';
+                    $html .= ' id="chk_7_'.$item['id'].'"/></td>';
                     $html .= '<td valign="top">'.$item['dtt'].'</td><td valign="top"><a href="javascript:void(0);" onclick="show_content('.$item['id'].');">'.$item['news_title'].'</a></td>';
 					$html .= '<td valign="top">'.$item['site'].'</td><td valign="top">'.$item['event'].'</td><td valign="top">'.$item['country'].'</td><td valign="top">'.$item['sentiment'].'</td>';
                     foreach($uClmnData as $item1)
@@ -455,6 +475,15 @@
 						{
 							//$param_source = getTypeFromSitename($val);
 							$sql .= 'event="'.$val.'" or ';
+						}
+
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ') and (';
+                        
+                        foreach($optionArr5 as $key=>$val)
+						{
+							//$param_source = getTypeFromSitename($val);
+							$sql .= 'sentiment="'.$val.'" or ';
 						}
 
 						$sql = substr($sql, 0, strlen($sql) - 3);
@@ -540,6 +569,15 @@
 						$sql = substr($sql, 0, strlen($sql) - 3);
 						$sql .= ') and (';
 
+						foreach($optionArr5 as $key=>$val)
+						{
+							//$param_source = getTypeFromSitename($val);
+							$sql .= 'sentiment="'.$val.'" or ';
+						}
+
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ') and (';
+                        
 						foreach($optionArr4 as $key=>$val)
 						{
 							//$param_source = getTypeFromSitename($val);
@@ -610,6 +648,15 @@
 						$sql = substr($sql, 0, strlen($sql) - 3);
 						$sql .= ') and (';
 
+						foreach($optionArr5 as $key=>$val)
+						{
+							//$param_source = getTypeFromSitename($val);
+							$sql .= 'aentiment="'.$val.'" or ';
+						}
+
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ') and (';
+                        
 						foreach($optionArr4 as $key=>$val)
 						{
 							//$param_source = getTypeFromSitename($val);
@@ -684,7 +731,16 @@
 						$sql = substr($sql, 0, strlen($sql) - 3);
 						$sql .= ') and (';
 
-						foreach($optionArr4 as $key=>$val)
+						foreach($optionArr5 as $key=>$val)
+						{
+							//$param_source = getTypeFromSitename($val);
+							$sql .= 'sentiment="'.$val.'" or ';
+						}
+
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ') and (';
+                        
+                        foreach($optionArr4 as $key=>$val)
 						{
 							//$param_source = getTypeFromSitename($val);
 							$sql .= 'country="'.$val.'" or ';
@@ -706,6 +762,84 @@
 					array_push($news_event_filter, $val);
 			}
 
+			//SENTIMENT FILTER SEARCH
+			$news_sentiment_filter = array();
+			if ($option5 == '')
+			{
+				$sql = 'select sentiment from tb_news where '.$subwhere.' and news_title<>"" and news_title like "%'.$keyword.'%" ';
+				if ($optionKind == '4')
+				{
+					if (count($optionArr1) > 0 and count($optionArr2) > 0 and count($optionArr4) > 0)
+					{
+						$sql .= ' and (';
+
+						foreach($optionArr1 as $key=>$val)
+						{
+							if ($val != 'N/A')
+							{
+								$param_dt = date('Y-m',strtotime(dt_adjust($val)));
+
+								$min_dt = $param_dt.'-01';
+								$max_dt = $param_dt.'-31';
+
+								$sql .= '(news_date>="'.$min_dt.'" and news_date<="'.$max_dt.'") or ';
+							}
+							else
+								$sql .= '(news_date>="N/A") or ';
+						}
+						
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ') and (';
+
+						foreach($optionArr2 as $key=>$val)
+						{
+							//$param_source = getTypeFromSitename($val);
+							$sql .= 'company_name="'.$val.'" or ';
+						}
+
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ') and (';
+
+						foreach($optionArr3 as $key=>$val)
+						{
+							//$param_source = getTypeFromSitename($val);
+							$sql .= 'event="'.$val.'" or ';
+						}
+
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ') and (';
+
+						foreach($optionArr5 as $key=>$val)
+						{
+							//$param_source = getTypeFromSitename($val);
+							$sql .= 'sentiment="'.$val.'" or ';
+						}
+
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ') and (';
+                        
+						foreach($optionArr4 as $key=>$val)
+						{
+							//$param_source = getTypeFromSitename($val);
+							$sql .= 'country="'.$val.'" or ';
+						}
+
+						$sql = substr($sql, 0, strlen($sql) - 3);
+						$sql .= ')';
+					}
+				}
+				$sql .= 'group by sentiment order by sentiment asc';
+				$res = mysql_query($sql);
+				
+				while ($arr = mysql_fetch_array($res))
+					array_push($news_sentiment_filter, $arr['sentiment']);
+			}
+			else
+			{
+				foreach($optionArr5 as $key=>$val)
+					array_push($news_sentiment_filter, $val);
+			}
+            
 			$ret = array();
 			$ret['itemNum'] = $itemNum;
 			$ret['pgNum'] = $pgNum;
@@ -717,6 +851,7 @@
 			$ret['news_source_filter'] = array2json($news_source_filter);
 			$ret['news_event_filter'] = array2json($news_event_filter);
 			$ret['news_country_filter'] = array2json($news_country_filter);
+      		$ret['news_sentiment_filter'] = array2json($news_sentiment_filter);
             $ret['pageRowIds'] = array2json($pageRowIds);
             $ret['checkedRows'] = array2json($checkedRows);
             $ret['userColumns'] = array2json($userColumns);
@@ -857,12 +992,14 @@
 			$option2 = $_POST['option2'];
 			$option3 = $_POST['option3'];
 			$option4 = $_POST['option4'];
+            $option5 = $_POST['option5'];
 			$optionKind = $_POST['optionKind'];
 
 			$optionArr1 = json_decode($option1, true);
 			$optionArr2 = json_decode($option2, true);
 			$optionArr3 = json_decode($option3, true);
 			$optionArr4 = json_decode($option4, true);
+            $optionArr5 = json_decode($option5, true);
 			
 			$sortkey = '';
 			if ($sort == '1')
@@ -1375,7 +1512,7 @@ function check()
 	$.ajax({
 		type: "POST", 
 		url: "index.php",
-		data : {postflag:'1',keyword:keyword, page:'1', sort:'1', up_down:'1', checkedRows:'', option1:'', option2:'', option3:'', option4:'', optionKind:'', industry1:industry1, industry2:industry2},
+		data : {postflag:'1',keyword:keyword, page:'1', sort:'1', up_down:'1', checkedRows:'', option1:'', option2:'', option3:'', option4:'', option5:'', optionKind:'', industry1:industry1, industry2:industry2},
 		success : function(data){
 			console.log(data);
 			processJson(data);
@@ -1429,6 +1566,15 @@ function pg_Navigate()
 	}
 	var optStr4 = JSON.stringify(opt_chk4);
 
+	var opt_chk5 = [];
+	var ind = 0;
+	var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str1').val());
+	for (i = 0; i < news_sentiment_filter.length; i++)
+	{
+		opt_chk5[i] = news_sentiment_filter[i];
+	}
+	var optStr5 = JSON.stringify(opt_chk5);
+    
 	var optionKind = '4';
 
 	var sort = $('#sort').val();
@@ -1449,7 +1595,7 @@ function pg_Navigate()
   	var pageRowIds = jQuery.parseJSON($('#pageRowIds').val());
  	for (i = 0; i < pageRowIds.length; i++)
 	{
-		var val = $('#chk_5_' + pageRowIds[i]).is(':checked');
+		var val = $('#chk_7_' + pageRowIds[i]).is(':checked');
         var x = checkedRows.indexOf(pageRowIds[i]);
 		if (val == true)
 		{
@@ -1465,7 +1611,7 @@ function pg_Navigate()
 	$.ajax({
 		type: "POST", 
 		url: "index.php",
-		data : {postflag:'1',keyword:keyword, page:pg, sort:sort, up_down:up_down, checkedRows:checkedRowsStr, option1:optStr1, option2:optStr2, option3:optStr3, option4:optStr4, optionKind:optionKind, industry1:industry1, industry2:industry2},
+		data : {postflag:'1',keyword:keyword, page:pg, sort:sort, up_down:up_down, checkedRows:checkedRowsStr, option1:optStr1, option2:optStr2, option3:optStr3, option4:optStr4, option5:optStr5, optionKind:optionKind, industry1:industry1, industry2:industry2},
 		success : function(data){
 			console.log(data);
 			processJson(data);
@@ -1488,7 +1634,8 @@ function processJson(data)
 		$('#source_filter_str1').val(obj.news_source_filter);
 		$('#event_filter_str1').val(obj.news_event_filter);
 		$('#country_filter_str1').val(obj.news_country_filter);
-	}
+		$('#sentiment_filter_str1').val(obj.news_sentiment_filter);
+  	}
 	else
 	{
 		$('#dt_filter_str').val(obj.news_date_filter);
@@ -1499,6 +1646,8 @@ function processJson(data)
 		$('#event_filter_str').val(obj.news_event_filter);
 		$('#country_filter_str').val(obj.news_country_filter);
 		$('#country_filter_str1').val(obj.news_country_filter);
+   		$('#sentiment_filter_str').val(obj.news_sentiment_filter);
+    	$('#sentiment_filter_str1').val(obj.news_sentiment_filter);
 	}
     $('#pageRowIds').val(obj.pageRowIds);
     $('#checkedRows').val(obj.checkedRows);
@@ -1649,6 +1798,15 @@ function sort(val)
 	}
 	var optStr4 = JSON.stringify(opt_chk4);
 
+	var opt_chk5 = [];
+	var ind = 0;
+	var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str1').val());
+	for (i = 0; i < news_sentiment_filter.length; i++)
+	{
+		opt_chk5[i] = news_sentiment_filter[i];
+	}
+	var optStr5 = JSON.stringify(opt_chk5);
+    
 	var optionKind = '4';
 
 	var cur_pg = parseInt($('#cur_pg').val());
@@ -1671,7 +1829,7 @@ function sort(val)
   	var pageRowIds = jQuery.parseJSON($('#pageRowIds').val());
  	for (i = 0; i < pageRowIds.length; i++)
 	{
-		var is_checked = $('#chk_5_' + pageRowIds[i]).is(':checked');
+		var is_checked = $('#chk_7_' + pageRowIds[i]).is(':checked');
         var x = checkedRows.indexOf(pageRowIds[i]);
 		if (is_checked == true)
 		{
@@ -1731,7 +1889,7 @@ function sort(val)
 	$.ajax({
 		type: "POST", 
 		url: "index.php",
-		data : {postflag:'1',keyword:keyword, page:'1', sort:val, up_down:up_down, checkedRows:checkedRowsStr, option1:optStr1, option2:optStr2, option3:optStr3, option4:optStr4, optionKind:optionKind, industry1:industry1, industry2:industry2},
+		data : {postflag:'1',keyword:keyword, page:'1', sort:val, up_down:up_down, checkedRows:checkedRowsStr, option1:optStr1, option2:optStr2, option3:optStr3, option4:optStr4, option5:optStr5, optionKind:optionKind, industry1:industry1, industry2:industry2},
 		success : function(data){
 			console.log(data);
 			processJson(data);
@@ -1860,7 +2018,32 @@ function openFilter(val)
 	}
     else if (val == '6') // Sentiment
 	{
-	   return;
+		$('#drop_down_list').html('');
+		var news_sentiment_filter1 = jQuery.parseJSON($('#sentiment_filter_str1').val());
+		var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str').val());
+
+		var html1 = '<ul class="sb_dropdown" style="display:none; position:absolute" id="dt_filter"><li class="sb_filter">Filter your search</li>';
+		html1 += '<li><input type="checkbox" id="chk_all5" onclick="chk_all(\'5\');"/><label for="chk_all5">Check All</label></li><li></li>';
+
+		var flag = '1';
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			var indd = jQuery.inArray( news_sentiment_filter[i], news_sentiment_filter1 );
+			if (indd == '-1')
+			{
+				flag = '2';
+				html1 += '<li style="width:50%"><input type="checkbox" onclick="chk_each(\'5\');" id="chk_5_' + i + '"/><label for="chk_5_' + i + '">' + news_sentiment_filter[i] + '</label></li>'; 
+			}
+			else
+				html1 += '<li style="width:50%"><input type="checkbox" onclick="chk_each(\'5\');" checked id="chk_5_' + i + '"/><label for="chk_5_' + i + '">' + news_sentiment_filter[i] + '</label></li>'; 
+		}
+		html1 += '<li class="sb_filter1" style="width:348px;height:25px; line-height:25px; padding:5px; text-align:center;"><input type="button" name="confirm" value="Confirm" onclick="confirm(\'6\');" style="text-align:center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="cancel" value="Cancel" onclick="cancel();" style="text-align:center"></li>';
+		html1 += '</ul>';
+
+		$('#drop_down_list').html(html1);
+
+		if (flag == '1')
+			$('#chk_all5').attr('checked', 'checked');
 	}
 	var x = $('#head' + val).offset();
 	console.log(x);
@@ -1927,14 +2110,14 @@ function check_page()
     {
         for (i = 0; i < pageRowIds.length; i++)
         {
-            $('#chk_5_' + pageRowIds[i]).attr('checked', 'checked');
+            $('#chk_7_' + pageRowIds[i]).attr('checked', 'checked');
         }
     }
     else
     {
         for (i = 0; i < pageRowIds.length; i++)
         {
-            $('#chk_5_' + pageRowIds[i]).removeAttr('checked');
+            $('#chk_7_' + pageRowIds[i]).removeAttr('checked');
         }
     }
 }
@@ -1945,7 +2128,8 @@ function confirm(val1)
 	var opt_chk2 = [];
 	var opt_chk3 = [];
 	var opt_chk4 = [];
-	var ind = 0;
+	var opt_chk5 = [];
+    var ind = 0;
 	if (val1 == '1')
 	{
 		var news_date_filter = jQuery.parseJSON($('#dt_filter_str').val());
@@ -1977,6 +2161,12 @@ function confirm(val1)
 			opt_chk4[i] = news_country_filter[i];
 		}
 
+		var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str1').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
+		}
+        
 		if (opt_chk1.length == 0)
 		{
 			alert('Please check at least one option');
@@ -2013,6 +2203,12 @@ function confirm(val1)
 			opt_chk4[i] = news_country_filter[i];
 		}
 
+		var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str1').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
+		}
+        
 		if (opt_chk2.length == 0)
 		{
 			alert('Please check at least one option');
@@ -2043,6 +2239,13 @@ function confirm(val1)
 				opt_chk3[ind++] = $('label[for="chk_3_' + i + '"]').text();
 			}
 		}
+        
+        var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str1').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
+		}
+        
 		if (opt_chk3.length == 0)
 		{
 			alert('Please check at least one option');
@@ -2075,6 +2278,12 @@ function confirm(val1)
 			opt_chk3[i] = news_event_filter[i];
 		}
 
+		var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str1').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
+		}
+        
 		ind = 0;
 		var news_country_filter = jQuery.parseJSON($('#country_filter_str').val());
 		for (i = 0; i < news_country_filter.length; i++)
@@ -2091,7 +2300,48 @@ function confirm(val1)
 			return;
 		}
 	}
+	else if (val1 == '6')
+	{
+		var news_date_filter = jQuery.parseJSON($('#dt_filter_str1').val());
+		for (i = 0; i < news_date_filter.length; i++)
+		{
+			opt_chk1[i] = news_date_filter[i];
+		}
 
+		var news_source_filter = jQuery.parseJSON($('#source_filter_str1').val());
+		for (i = 0; i < news_source_filter.length; i++)
+		{
+			opt_chk2[i] = news_source_filter[i];
+		}
+
+		var news_event_filter = jQuery.parseJSON($('#event_filter_str1').val());
+		for (i = 0; i < news_event_filter.length; i++)
+		{
+			opt_chk3[i] = news_event_filter[i];
+		}
+
+		var news_country_filter = jQuery.parseJSON($('#country_filter_str1').val());
+		for (i = 0; i < news_country_filter.length; i++)
+		{
+			opt_chk4[i] = news_country_filter[i];
+		}
+        
+		ind = 0;
+		var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			var val = $('#chk_5_' + i).is(':checked');
+			if (val == true)
+			{
+				opt_chk5[ind++] = $('label[for="chk_5_' + i + '"]').text();
+			}
+		}
+		if (opt_chk5.length == 0)
+		{
+			alert('Please check at least one option');
+			return;
+		}
+	}
 	var col_ind = $('#col_ind').val();
 	if (col_ind != val)
 	{
@@ -2104,11 +2354,12 @@ function confirm(val1)
 	var optStr2 = JSON.stringify(opt_chk2);
 	var optStr3 = JSON.stringify(opt_chk3);
 	var optStr4 = JSON.stringify(opt_chk4);
-
-	Submit_Option(optStr1, optStr2, optStr3, optStr4, val1);
+	var optStr5 = JSON.stringify(opt_chk5);
+    
+	Submit_Option(optStr1, optStr2, optStr3, optStr4, optStr5, val1);
 }
 
-function Submit_Option(optStr1, optStr2, optStr3, optStr4, val)
+function Submit_Option(optStr1, optStr2, optStr3, optStr4, optStr5, val)
 {
 	var industry1 = 1, industry2 = 1;
 //	if ($('#chk_industry1').is(':checked') == false)
@@ -2137,7 +2388,7 @@ function Submit_Option(optStr1, optStr2, optStr3, optStr4, val)
   	var pageRowIds = jQuery.parseJSON($('#pageRowIds').val());
  	for (i = 0; i < pageRowIds.length; i++)
 	{
-		var val = $('#chk_5_' + pageRowIds[i]).is(':checked');
+		var val = $('#chk_7_' + pageRowIds[i]).is(':checked');
         var x = checkedRows.indexOf(pageRowIds[i]);
 		if (val == true)
 		{
@@ -2152,7 +2403,7 @@ function Submit_Option(optStr1, optStr2, optStr3, optStr4, val)
 	$.ajax({
 		type: "POST", 
 		url: "index.php",
-		data : {postflag:'1',keyword:keyword, page:'1', sort:sort, up_down:up_down, checkedRows:checkedRowsStr, option1:optStr1, option2:optStr2, option3:optStr3, option4:optStr4, optionKind:'4', industry1:industry1, industry2:industry2},
+		data : {postflag:'1',keyword:keyword, page:'1', sort:sort, up_down:up_down, checkedRows:checkedRowsStr, option1:optStr1, option2:optStr2, option3:optStr3, option4:optStr4, option5:optStr5, optionKind:'4', industry1:industry1, industry2:industry2},
 		success : function(data){
 			console.log(data);
 			processJson(data);
@@ -2313,7 +2564,8 @@ function export_excel()
 	var opt_chk2 = [];
 	var opt_chk3 = [];
 	var opt_chk4 = [];
-	var ind = 0;
+	var opt_chk5 = [];
+    var ind = 0;
 	if (val1 == '1')
 	{
 		var news_date_filter = jQuery.parseJSON($('#dt_filter_str1').val());
@@ -2338,6 +2590,12 @@ function export_excel()
 		for (i = 0; i < news_country_filter.length; i++)
 		{
 			opt_chk4[i] = news_country_filter[i];
+		}
+        
+        var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
 		}
 	}
 	else if (val1 == '3')
@@ -2365,6 +2623,12 @@ function export_excel()
 		{
 			opt_chk4[i] = news_country_filter[i];
 		}
+        
+        var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
+		}
 	}
 	else if (val1 == '4')
 	{
@@ -2390,6 +2654,12 @@ function export_excel()
 		for (i = 0; i < news_country_filter.length; i++)
 		{
 			opt_chk4[i] = news_country_filter[i];
+		}
+        
+        var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
 		}
 	}
 	else if (val1 == '5')
@@ -2417,13 +2687,51 @@ function export_excel()
 		{
 			opt_chk4[i] = news_country_filter[i];
 		}
+        
+        var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
+		}
 	}
+	else if (val1 == '6')
+	{
+		var news_date_filter = jQuery.parseJSON($('#dt_filter_str').val());
+		for (i = 0; i < news_date_filter.length; i++)
+		{
+			opt_chk1[i] = news_date_filter[i];
+		}
 
+		var news_source_filter = jQuery.parseJSON($('#source_filter_str').val());
+		for (i = 0; i < news_source_filter.length; i++)
+		{
+			opt_chk2[i] = news_source_filter[i];
+		}
+
+		var news_event_filter = jQuery.parseJSON($('#event_filter_str').val());
+		for (i = 0; i < news_event_filter.length; i++)
+		{
+			opt_chk3[i] = news_event_filter[i];
+		}
+
+		var news_country_filter = jQuery.parseJSON($('#country_filter_str').val());
+		for (i = 0; i < news_country_filter.length; i++)
+		{
+			opt_chk4[i] = news_country_filter[i];
+		}
+        
+        var news_sentiment_filter = jQuery.parseJSON($('#sentiment_filter_str').val());
+		for (i = 0; i < news_sentiment_filter.length; i++)
+		{
+			opt_chk5[i] = news_sentiment_filter[i];
+		}
+	}
 	var optStr1 = JSON.stringify(opt_chk1);
 	var optStr2 = JSON.stringify(opt_chk2);
 	var optStr3 = JSON.stringify(opt_chk3);
 	var optStr4 = JSON.stringify(opt_chk4);
-
+	var optStr5 = JSON.stringify(opt_chk5);
+    
 	var industry1 = 1, industry2 = 1;
 //	if ($('#chk_industry1').is(':checked') == false)
 //		industry1 = 0;
@@ -2447,7 +2755,7 @@ function export_excel()
   	var pageRowIds = jQuery.parseJSON($('#pageRowIds').val());
  	for (i = 0; i < pageRowIds.length; i++)
 	{
-		var val = $('#chk_5_' + pageRowIds[i]).is(':checked');
+		var val = $('#chk_7_' + pageRowIds[i]).is(':checked');
         var x = checkedRows.indexOf(pageRowIds[i]);
 		if (val == true)
 		{
@@ -2462,7 +2770,7 @@ function export_excel()
 	$.ajax({
 		type: "POST", 
 		url: "index.php",
-		data : {postflag:'3',keyword:keyword, sort:sort, up_down:up_down, checkedRows:checkedRowsStr, option1:optStr1, option2:optStr2, option3:optStr3, option4:optStr4, optionKind:'4', industry1:industry1, industry2:industry2},
+		data : {postflag:'3',keyword:keyword, sort:sort, up_down:up_down, checkedRows:checkedRowsStr, option1:optStr1, option2:optStr2, option3:optStr3, option4:optStr4, option5:optStr5, optionKind:'4', industry1:industry1, industry2:industry2},
 		success : function(data){
 			console.log(data);
 			$('#sql').val(data);
@@ -2506,7 +2814,9 @@ function export_excel()
 							<input type="hidden" name="source_filter_str1" id="source_filter_str1" value="">
 							<input type="hidden" name="event_filter_str" id="event_filter_str" value="">
 							<input type="hidden" name="event_filter_str1" id="event_filter_str1" value="">
-							<input type="hidden" name="country_filter_str" id="country_filter_str" value="">
+							<input type="hidden" name="sentiment_filter_str" id="sentiment_filter_str" value="">
+							<input type="hidden" name="sentiment_filter_str1" id="sentiment_filter_str1" value="">
+                            <input type="hidden" name="country_filter_str" id="country_filter_str" value="">
 							<input type="hidden" name="country_filter_str1" id="country_filter_str1" value="">
                             <input type="hidden" name="pageRowIds" id="pageRowIds" value="">
                             <input type="hidden" name="checkedRows" id="checkedRows" value="">
