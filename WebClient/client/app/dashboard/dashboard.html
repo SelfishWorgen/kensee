@@ -1,0 +1,143 @@
+<div class="container-dashboard">
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="kensee-page-header">
+  <div class="container">
+    <div class="country-select">
+      <div class="location-icon">
+        <img src="/assets/images/location.png">
+      </div>
+      <select ng-model="country">
+        <option value="United States">UNITED STATES</option>
+      </select>
+      <span class="chev-down glyphicon glyphicon-chevron-down"></span>
+    </div>
+    <div class="date-range-section">
+      <button class="text-button" ng-click="changeDateRange(3)"
+              ng-class="{true: 'green-text-button', false: 'gray-text-button'}[dateRange==3]">3 Months</button>
+      <div class="buttons-divider">|</div>
+      <button class="text-button" ng-click="changeDateRange(6)"
+              ng-class="{true: 'green-text-button', false: 'gray-text-button'}[dateRange==6]">6 Months</button>
+      <div class="buttons-divider">|</div>
+      <button class="text-button" ng-click="changeDateRange(12)"
+              ng-class="{true: 'green-text-button', false: 'gray-text-button'}[dateRange==12]">1 Year</button>
+      <div class="buttons-divider">|</div>
+      <button class="text-button" ng-click="changeDateRange(36)"
+              ng-class="{true: 'green-text-button', false: 'gray-text-button'}[dateRange==36]">3 Years</button>
+      <div class="buttons-divider">|</div>
+      <button class="text-button" ng-click="changeDateRange(144)"
+              ng-class="{true: 'green-text-button', false: 'gray-text-button'}[dateRange==144]">12 Years</button>
+    </div>
+  </div>
+</div>
+<div class="first-graph-line container">
+  <div class="sentiment-graph">
+    <div class="graph-title">
+      GENERAL MARKET SENTIMENT
+    </div>
+    <div id="sentimentChart"></div>
+  </div>
+  <div class="general-info">
+    <div class="general-info-header">
+      GENERAL INFORMATION
+    </div>
+    <div ng-repeat="info_element in general_info">
+      <div class="general-info-line">
+        <span>{{info_element.Name}}:</span> {{info_element.Value}}
+      </div>
+    </div>
+    <div ng-repeat="highlightArticle in general_info">
+    </div>
+  </div>
+</div>
+<div class="second-graph-line container">
+  <div class="left-graph small-graph">
+    <!--<div class="graph-title dropdown-title">-->
+      <!--<select ng-model="currentComparisonSelection" ng-change="preparePropertycomparisonGraph()">-->
+        <!--<option value="Leisure">LEISURE</option>-->
+        <!--<option value="Office">OFFICE</option>-->
+        <!--<option value="Multifamily">MULTIFAMILY</option>-->
+        <!--<option value="Retail">RETAIL</option>-->
+        <!--<option value="Industrial">INDUSTRIAL</option>-->
+        <!--<option value="Healthcare">HEALTHCARE</option>-->
+      <!--</select>-->
+      <!--<span class="chev-down glyphicon glyphicon-chevron-down"></span>-->
+    <!--</div>-->
+    <!--<div ng-class="{ 'small-chart-no-tick': dateRange >= 12 }" id="comparisonChart"></div>-->
+    <div class="graph-title">
+      CONSTRUCTION SPENDING
+    </div>
+    <div ng-class="{ 'small-chart-no-tick': dateRange >= 12 }" id="constructionAreaGraph"></div>
+  </div>
+  <div class="middle-graph small-graph">
+    <div class="graph-title">
+      CONSTRUCTION SPENDING
+    </div>
+    <div ng-class="{ 'small-chart-no-tick': dateRange >= 12 }" id="constructionLineGraph"></div>
+  </div>
+  <div class="right-graph small-graph">
+    <div class="graph-title">
+      MACRO
+    </div>
+    <div ng-class="{ 'small-chart-no-tick': dateRange >= 12 }" id="macroChart"></div>
+  </div>
+</div>
+<div class="highlights-section">
+  <div class="container">
+    <div class="highlights-left hightlight">
+      <div class="highlight-header">
+        CBRE Market Reports
+      </div>
+      <div ng-repeat="highlightArticle in CBREHighlights">
+        <a class="highlight-link" href="{{highlightArticle.url}}" target="_blank">
+          <div class="highlight-title ellipsis">
+            <div>
+              <p>{{highlightArticle.title}}</p>
+            </div>
+          </div>
+          <div class="highlight-date">
+            {{highlightArticle.date}}
+          </div>
+        </a>
+        </div>
+    </div>
+    <div class="highlights-middle hightlight">
+      <div class="highlights-left hightlight">
+        <div class="highlight-header">
+          Colliers Market Reports
+        </div>
+        <div ng-repeat="highlightArticle in colliersHighlights">
+          <a class="highlight-link" href="{{highlightArticle.url}}" target="_blank">
+            <div class="highlight-title ellipsis">
+              <div>
+                <p>{{highlightArticle.title}}</p>
+              </div>
+            </div>
+            <div class="highlight-date">
+              {{highlightArticle.date}}
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="highlights-right hightlight">
+      <div class="highlights-left hightlight">
+        <div class="highlight-header">
+          Cushman & Wakefield Market Reports
+        </div>
+        <div ng-repeat="highlightArticle in cushmanHighlights">
+          <a class="highlight-link" href="{{highlightArticle.url}}" target="_blank">
+            <div class="highlight-title ellipsis">
+              <div>
+                <p>{{highlightArticle.title}}</p>
+              </div>
+            </div>
+            <div class="highlight-date">
+              {{highlightArticle.date}}
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>

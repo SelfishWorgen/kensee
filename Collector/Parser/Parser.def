@@ -1,0 +1,12 @@
+; Utl.def : Declares the module parameters for the DLL.
+
+LIBRARY      "Parser"
+;DESCRIPTION  'Parser Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+
+ParseText   @1
+InitializeParser   @2
+
+

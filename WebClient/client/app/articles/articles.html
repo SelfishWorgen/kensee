@@ -1,0 +1,210 @@
+<div class="container-articles">
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="kensee-page-header">
+  <div class="search-left-side">
+    <form ng-submit="search()">
+      <input class="search-input" ng-model="searchTerm" placeholder="Type keywords to search (location, company, etc.)">
+      <button class="search-button" ng-click="search()">
+        <img src="assets/images/magnifier.png"/>
+      </button>
+    </form>
+  </div>
+  <div class="search-right-side">
+    <button class="text-button" ng-click="allSelected=true"
+            ng-class="{true: 'green-text-button', false: 'gray-text-button'}[allSelected]">All</button>
+    <div class="buttons-divider">|</div>
+    <button class="text-button" ng-click="allSelected=false"
+            ng-class="{true: 'gray-text-button', false: 'green-text-button'}[allSelected]">Selected</button>
+    <div class="export-button gradient-clickable" ng-click="exportToCSV()">
+      EXPORT <img width="20" height="20" style="margin-left: 10px; margin-top:-5px;" src="assets/images/excel.png"/>
+    </div>
+  </div>
+</div>
+<div class="main-screen">
+  <div>
+    <div class="filters-section">
+      <div class="filter-main">
+        <div class="side-section-header">
+          FILTER YOUR SEARCH
+        </div>
+        <div class="first-filter-section">
+          <div class="filter-tags-section-headline">
+            <span class="clickable-section-header kensee-grey-color" ng-click="tagsCollapsed = !tagsCollapsed">Selected Filters</span>  |  <span class="clickable-section-header green-text-button" ng-click="clearAllFilterTags()">Reset</span>
+            <div class="expand-collpase-button glyphicon green-text-button" ng-click="tagsCollapsed = !tagsCollapsed"
+                 ng-class="{'glyphicon-chevron-down': tagsCollapsed, 'glyphicon-chevron-up': !tagsCollapsed}"></div>
+          </div>
+          <div class="filter-tags-part" ng-hide="tagsCollapsed">
+            <ul class="filter-tags">
+              <li ng-repeat="tag in filterTags">
+                {{tag.value}} <a class="tagfilter-remove-button" ng-click="deleteFilterTag($index)">
+                <span class="glyphicon glyphicon-remove white-color"></span>
+              </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section-headline">
+            Dates
+          </div>
+          <div class="date-buttons">
+            <div class="dropdown first-date-button-container">
+              <a class="dropdown-toggle date-button gradient-clickable">
+                {{startDate | amDateFormat:'D MMM YY'}}
+              </a>
+
+              <div class="dropdown-menu" ng-click="$event.preventDefault();$event.stopPropagation()">
+                <div date-picker="startDate" view="date" min-view="date"></div>
+              </div>
+            </div>
+            <img class="between-dates" src="assets/images/betweenDates.png"/>
+            <div class="dropdown second-date-button-container">
+              <a class="dropdown-toggle date-button gradient-clickable">
+                {{endDate | amDateFormat:'D MMM YY'}}
+              </a>
+
+              <div class="dropdown-menu" ng-click="$event.preventDefault();$event.stopPropagation()">
+                <div date-picker="endDate" view="date" min-view="date"></div>
+              </div>
+            </div>
+          </div>
+          <div class="date-radios">
+            <input class="date-radio" id="radio_last_week" type="radio" ng-model="dateRange" value="last_week" ng-change='dateRangeSelected(dateRange)'>
+            <label for="radio_last_week">Last Week</label><br/>
+            <input class="date-radio" id="radio_last_month" type="radio" ng-model="dateRange" value="last_month" ng-change='dateRangeSelected(dateRange)'>
+            <label for="radio_last_month">Last Month</label><br/>
+            <input class="date-radio" id="radio_last_3_month" type="radio" ng-model="dateRange" value="last_3_months" ng-change='dateRangeSelected(dateRange)'>
+            <label for="radio_last_3_month">Last 3 Months</label><br/>
+            <input class="date-radio" id="radio_last_6_month" type="radio" ng-model="dateRange" value="last_6_months" ng-change='dateRangeSelected(dateRange)'>
+            <label for="radio_last_3_month">Last 6 Months</label><br/>
+            <input class="date-radio" id="radio_last_year" type="radio" ng-model="dateRange" value="last_year" ng-change='dateRangeSelected(dateRange)'>
+            <label for="radio_last_year">Last Year</label><br/>
+          </div>
+        </div>
+
+        <div class="filter-section countries-section">
+          <div class="filter-section-headline">
+            <span class="clickable-section-header" ng-click="countryCollapsed = !countryCollapsed">Location</span>
+            <div class="expand-collpase-button glyphicon" ng-click="countryCollapsed = !countryCollapsed"
+                 ng-class="{'glyphicon-chevron-down': countryCollapsed, 'glyphicon-chevron-up': !countryCollapsed}"></div>
+          </div>
+          <div class="country-checkboxes countrySlideDown" ng-hide="countryCollapsed">
+            <div class="single-checkbox" ng-repeat="country in countries">
+              <input class="checkbox-elem country-checkbox" type="checkbox" id="checkbox_country_{{country}}" checklist-change="filterListChanged(selected_countries, COUNTRY_COL)" checklist-model="selected_countries" checklist-value="country">
+              <label for="checkbox_country_{{country}}" class="checkbox-label-box"></label>
+              <label for="checkbox_country_{{country}}" class="checkbox-label-text">{{country}}</label>
+
+            </div>
+          </div>
+          <div class="filter-free-text city-section" ng-hide="countryCollapsed">
+            <input type="text" ng-change="gridRefresh()" style="padding-left: 5px;" placeholder="City" ng-model="gridApi.grid.columns[CITY_COL].filters[0].term">
+            <a class="clear-button" ng-click="clearLocation()">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section-headline">
+            <span class="clickable-section-header" ng-click="propertyCollapsed = !propertyCollapsed">Property</span>
+            <div class="expand-collpase-button glyphicon" ng-click="propertyCollapsed = !propertyCollapsed"
+                 ng-class="{'glyphicon-chevron-down': propertyCollapsed, 'glyphicon-chevron-up': !propertyCollapsed}"></div>
+          </div>
+          <div class="single-checkbox" ng-repeat="propertyType in propertyTypes" ng-hide="propertyCollapsed">
+            <input class="checkbox-elem" type="checkbox" id="checkbox_property_{{propertyType}}" checklist-change="filterListChanged(selected_propertyTypes, PROPERTY_COL)" checklist-model="selected_propertyTypes" checklist-value="propertyType">
+            <label for="checkbox_property_{{propertyType}}" class="checkbox-label-box"></label>
+            <label for="checkbox_property_{{propertyType}}" class="checkbox-label-text">{{propertyType}}</label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section-headline">
+            <span class="clickable-section-header" ng-click="topicCollapsed = !topicCollapsed">Topic</span>
+            <div class="expand-collpase-button glyphicon" ng-click="topicCollapsed = !topicCollapsed"
+                 ng-class="{'glyphicon-chevron-down': topicCollapsed, 'glyphicon-chevron-up': !topicCollapsed}"></div>
+          </div>
+          <div class="single-checkbox" ng-repeat="topic in topics" ng-hide="topicCollapsed">
+            <input class="checkbox-elem" type="checkbox" id="checkbox_topic_{{topic}}" checklist-change="filterListChanged(selected_topics, TOPIC_COL)" checklist-model="selected_topics" checklist-value="topic">
+            <label for="checkbox_topic_{{topic}}" class="checkbox-label-box"></label>
+            <label for="checkbox_topic_{{topic}}" class="checkbox-label-text">{{topic}}</label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section-headline">
+            <span class="clickable-section-header" ng-click="sourceCollapsed = !sourceCollapsed">Source</span>
+            <div class="expand-collpase-button glyphicon" ng-click="sourceCollapsed = !sourceCollapsed"
+                 ng-class="{'glyphicon-chevron-down': sourceCollapsed, 'glyphicon-chevron-up': !sourceCollapsed}"></div>
+          </div>
+          <div class="filter-free-text" ng-hide="sourceCollapsed">
+            <input type="text" ng-change="gridRefresh()" ng-model="gridApi.grid.columns[SOURCE_COL].filters[0].term">
+            <a class="clear-button" ng-click="clearSearch(SOURCE_COL)">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section-headline">
+            <span class="clickable-section-header" ng-click="companyCollapsed = !companyCollapsed">Company</span>
+            <div class="expand-collpase-button glyphicon" ng-click="companyCollapsed = !companyCollapsed"
+                 ng-class="{'glyphicon-chevron-down': companyCollapsed, 'glyphicon-chevron-up': !companyCollapsed}"></div>
+          </div>
+          <div class="filter-free-text" ng-hide="companyCollapsed">
+            <input type="text" ng-change="gridRefresh()" ng-model="gridApi.grid.columns[COMPANY_COL].filters[0].term">
+            <a class="clear-button" ng-click="clearSearch(COMPANY_COL)">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section-headline">
+            <span class="clickable-section-header" ng-click="sentimentCollapsed = !sentimentCollapsed">Sentiment</span>
+            <div class="expand-collpase-button glyphicon" ng-click="sentimentCollapsed = !sentimentCollapsed"
+                 ng-class="{'glyphicon-chevron-down': sentimentCollapsed, 'glyphicon-chevron-up': !sentimentCollapsed}"></div>
+          </div>
+          <div class="single-checkbox" ng-repeat="sentiment in sentiments" ng-hide="sentimentCollapsed">
+            <input class="checkbox-elem" type="checkbox" id="checkbox_sentiment_{{sentiment}}" checklist-change="filterListChanged(selected_sentiments, SENTIMENT_COL)" checklist-model="selected_sentiments" checklist-value="sentiment">
+            <label for="checkbox_sentiment_{{sentiment}}" class="checkbox-label-box"></label>
+            <label for="checkbox_sentiment_{{sentiment}}" class="checkbox-label-text">{{sentiment}}</label>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--order is reversed on purpose - the grid part is "what's left"-->
+    <div class="article-section" ng-show="DisplayArticle">
+      <div class="side-section-header">
+        SUMMARY
+        <span class="close-button" ng-click="closeArticle()"></span>
+      </div>
+      <div class="article-summary-body">
+        <div class="article-url">
+          <a href="{{article.url}}" target="_blank" >{{article.short_url}}</a>
+        </div>
+        <p class="article-title">{{article.title}}</p>
+        <p class="article-date">{{article.date}}</p>
+        <p class="article-content">{{article.content}}</p>
+        <a href="{{article.url}}" target="_blank" class="article-read-more">Read More</a>
+        <div class="tags-part">
+          <ul class="tags">
+            <li ng-repeat="tag in article.tags">
+              {{tag}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="grid-section">
+      <div cg-busy="{promise:gridBusy,message:'Loading...'}"></div>
+      <div class="grid-main" id="grid-main-div">
+        <div ui-grid="gridOptions" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize ui-grid-exporter ui-grid-pagination class="myGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

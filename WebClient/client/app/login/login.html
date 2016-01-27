@@ -1,0 +1,40 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div id="DIV_1">
+  <div id="DIV_2">
+    <h1 id="H1_3">
+      Login <small id="SMALL_4">your Kensee account</small>
+    </h1>
+  </div>
+  <div id="DIV_5">
+    <form id="FORM_6" ng-submit="login()">
+      <div id="DIV_7">
+        <div id="DIV_8">
+
+          <label for="email"  id="LABEL_9">
+            Email Address
+          </label>
+          <input type="text" placeholder="Your email or username" ng-model="username" id="INPUT_10"/>
+        </div>
+        <div id="DIV_11">
+
+          <label for="password" id="LABEL_12">
+            Password
+          </label>
+          <input type="password" placeholder="Password" id="INPUT_13" ng-model="password"/>
+        </div>
+        <div id="DIV_14">
+
+          <button id="BUTTON_15">
+            Login
+          </button>
+        </div>
+      </div>
+      <!--/.loginform-->
+
+    </form>
+    <div class="error-message" ng-show="showError">
+      Wrong username/password. Please try again
+    </div>
+  </div>
+</div>

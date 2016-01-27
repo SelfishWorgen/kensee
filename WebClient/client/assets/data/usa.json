@@ -1,0 +1,446 @@
+{
+  "highlights": [
+    {
+      "Date": "15-08-2015",
+      "Title": "Palm Beach Opera unveils board appointments",
+      "Url": "http://www.palmbeachdailynews.com/news/business/palm-beach-opera-unveils-board-appointments/nnKZb/",
+      "Topic": "Construction"
+    },
+    {
+      "Date": "14-08-2015",
+      "Title": "Tanger Outlets Southaven to Host Job Fair on September 16th",
+      "Topic": "Buy/Sell",
+      "Url": "http://www.prnewswire.com/news-releases/tanger-outlets-southaven-to-host-job-fair-on-september-16th-300128908.html"
+    },
+    {
+      "Date": "14-08-2015",
+      "Title": "Transwestern Brings Lenox Overlook To 100 Percent Leased",
+      "Topic": "Rent",
+      "Url": "http://www.prnewswire.com/news-releases/transwestern-brings-lenox-overlook-to-100-percent-leased-300128701.html"
+    },
+    {
+      "Date": "14-08-2015",
+      "Title": "Rising Home Prices Across the U.S. Impacting Consumer Affordability",
+      "Topic": "Buy/Sell",
+      "Url": "http://www.worldpropertyjournal.com/real-estate-news/united-states/national-association-of-home-builders-wells-fargo-housing-opportunity-index-hoi-rising-home-prices-nationwide-housing-affordability-nahb-david-crowe-9290.php"
+    },
+    {
+      "Date": "14-08-2015",
+      "Title": "Despite Brazilian, Russian Buyer Slowdown, Miami Home Prices Still Rising",
+      "Topic": "Buy/Sell",
+      "Url": "http://www.worldpropertyjournal.com/real-estate-news/united-states/miami-real-estate-news/miami-real-estate-sales-report-2015-miami-condo-sales-home-prices-in-miami-miami-condo-prices-miami-association-of-realtors-new-condo-construction-in-miami-foreign-home-buyers-9291.php"
+    },
+    {
+      "Date": "14-08-2015",
+      "Title": "Best Florida city to open a restaurant? Here in Palm Beach County",
+      "Topic": "Construction",
+      "Url": "http://realtime.blog.palmbeachpost.com/2015/08/14/best-florida-city-to-open-a-restaurant-here-in-palm-beach-county/"
+    },
+    {
+      "Date": "14-08-2015",
+      "Title": "National Retail Properties, Inc. Declares Dividends For Its 6.625% Series D Preferred And 5.70% Series E Preferred Stocks",
+      "Topic": "Rent",
+      "Url": "http://www.prnewswire.com/news-releases/national-retail-properties-inc-declares-dividends-for-its-6625-series-d-preferred-and-570-series-e-preferred-stocks-300127609.html"
+    },
+    {
+      "Date": "14-08-2015",
+      "Title": "The Real Estate Roundtable Calls On Congress to Reform and Reauthorize EB-5 Investment Program by Sept. 30",
+      "Topic": "Construction",
+      "Url": "http://www.prnewswire.com/news-releases/the-real-estate-roundtable-calls-on-congress-to-reform-and-reauthorize-eb-5-investment-program-by-sept-30-300128715.html"
+    },
+    {
+      "Date": "14-08-2015",
+      "Title": "Madison Marquette and Carlin Company Announce Major Napa Recapitalization",
+      "Topic": "Rent",
+      "Url": "http://www.prnewswire.com/news-releases/madison-marquette-and-carlin-company-announce-major-napa-recapitalization-300128507.html"
+    }
+  ],
+  "market_sentiment": [
+    {
+      "date": "2013-10-18T13:59:03",
+      "sentiment": 1.0989
+    },
+    {
+      "date": "2013-10-21T13:20:01",
+      "sentiment": 4.52199
+    },
+    {
+      "date": "2013-10-28T12:55:15",
+      "sentiment": 4.37747
+    },
+    {
+      "date": "2013-11-07T14:48:06",
+      "sentiment": 6.8508
+    },
+    {
+      "date": "2013-11-11T13:03:15",
+      "sentiment": 5.82394
+    },
+    {
+      "date": "2013-11-21T09:09:00",
+      "sentiment": 5.74248
+    },
+    {
+      "date": "2013-11-25T06:38:19",
+      "sentiment": 5.40717
+    },
+    {
+      "date": "2013-12-02T05:41:59",
+      "sentiment": 5.97749
+    },
+    {
+      "date": "2013-12-09T04:19:59",
+      "sentiment": 6.6942
+    },
+    {
+      "date": "2013-12-16T04:54:31",
+      "sentiment": 4.59654
+    },
+    {
+      "date": "2013-12-23T09:48:40",
+      "sentiment": 5.15135
+    },
+    {
+      "date": "2014-01-03T12:10:18",
+      "sentiment": 0.375508
+    },
+    {
+      "date": "2014-01-06T06:44:11",
+      "sentiment": 2.21708
+    },
+    {
+      "date": "2014-01-14T08:40:47",
+      "sentiment": 0.936855
+    },
+    {
+      "date": "2014-01-20T06:38:17",
+      "sentiment": 5.1438
+    },
+    {
+      "date": "2014-01-27T05:59:52",
+      "sentiment": 5.37799
+    },
+    {
+      "date": "2014-02-03T08:01:29",
+      "sentiment": 5.76432
+    },
+    {
+      "date": "2014-02-10T03:28:35",
+      "sentiment": 5.32205
+    },
+    {
+      "date": "2014-02-17T03:31:14",
+      "sentiment": 4.00926
+    },
+    {
+      "date": "2014-02-24T06:40:35",
+      "sentiment": 4.10671
+    },
+    {
+      "date": "2014-03-03T04:57:04",
+      "sentiment": 3.80282
+    },
+    {
+      "date": "2014-03-10T08:28:11",
+      "sentiment": 4.26395
+    },
+    {
+      "date": "2014-03-17T06:43:58",
+      "sentiment": 3.9903
+    },
+    {
+      "date": "2014-03-24T05:23:27",
+      "sentiment": 4.74765
+    },
+    {
+      "date": "2014-03-31T07:59:14",
+      "sentiment": 4.68095
+    },
+    {
+      "date": "2014-04-07T07:59:45",
+      "sentiment": 4.39606
+    },
+    {
+      "date": "2014-04-14T05:49:21",
+      "sentiment": 3.60524
+    },
+    {
+      "date": "2014-04-21T07:41:12",
+      "sentiment": 3.52863
+    },
+    {
+      "date": "2014-04-28T07:36:46",
+      "sentiment": 3.59247
+    },
+    {
+      "date": "2014-05-05T05:54:36",
+      "sentiment": 4.16048
+    },
+    {
+      "date": "2014-05-12T06:04:21",
+      "sentiment": 4.40263
+    },
+    {
+      "date": "2014-05-20T03:16:35",
+      "sentiment": 4.1242
+    },
+    {
+      "date": "2014-05-27T10:09:02",
+      "sentiment": 4.23829
+    },
+    {
+      "date": "2014-06-02T08:28:43",
+      "sentiment": 3.46489
+    },
+    {
+      "date": "2014-06-09T07:50:38",
+      "sentiment": 3.92803
+    },
+    {
+      "date": "2014-06-16T06:31:52",
+      "sentiment": 3.94986
+    },
+    {
+      "date": "2014-06-23T07:05:01",
+      "sentiment": 4.05376
+    },
+    {
+      "date": "2014-06-30T06:16:26",
+      "sentiment": 3.33715
+    },
+    {
+      "date": "2014-07-07T06:46:57",
+      "sentiment": 3.28561
+    },
+    {
+      "date": "2014-07-14T07:00:34",
+      "sentiment": 3.52364
+    },
+    {
+      "date": "2014-07-21T09:28:56",
+      "sentiment": 3.4967
+    },
+    {
+      "date": "2014-07-28T06:19:49",
+      "sentiment": 3.34859
+    },
+    {
+      "date": "2014-08-05T07:31:32",
+      "sentiment": 4.14283
+    },
+    {
+      "date": "2014-08-11T07:33:12",
+      "sentiment": 4.14578
+    },
+    {
+      "date": "2014-08-17T00:00:00",
+      "sentiment": 3.90601
+    },
+    {
+      "date": "2014-08-24T00:00:00",
+      "sentiment": 3.06247
+    },
+    {
+      "date": "2014-08-31T00:00:00",
+      "sentiment": 2.97262
+    },
+    {
+      "date": "2014-09-07T00:00:00",
+      "sentiment": 2.81345
+    },
+    {
+      "date": "2014-09-14T00:00:00",
+      "sentiment": 2.10141
+    },
+    {
+      "date": "2014-09-21T00:00:00",
+      "sentiment": 1.25781
+    },
+    {
+      "date": "2014-09-28T00:00:00",
+      "sentiment": 1.01582
+    },
+    {
+      "date": "2014-10-05T00:00:00",
+      "sentiment": 1.40995
+    },
+    {
+      "date": "2014-10-12T00:00:00",
+      "sentiment": 2.64213
+    },
+    {
+      "date": "2014-10-20T07:57:40",
+      "sentiment": 3.00844
+    },
+    {
+      "date": "2014-10-26T00:00:00",
+      "sentiment": 2.92039
+    },
+    {
+      "date": "2014-11-02T00:00:00",
+      "sentiment": 2.59195
+    },
+    {
+      "date": "2014-11-10T00:00:00",
+      "sentiment": 2.78419
+    },
+    {
+      "date": "2014-11-17T00:00:00",
+      "sentiment": 2.71676
+    },
+    {
+      "date": "2014-11-24T00:00:00",
+      "sentiment": 2.912
+    },
+    {
+      "date": "2014-12-01T00:00:00",
+      "sentiment": 2.87567
+    },
+    {
+      "date": "2014-12-07T00:00:00",
+      "sentiment": 3.52204
+    },
+    {
+      "date": "2014-12-14T00:00:00",
+      "sentiment": 3.20295
+    },
+    {
+      "date": "2014-12-21T00:00:00",
+      "sentiment": 2.85464
+    },
+    {
+      "date": "2014-12-28T00:00:00",
+      "sentiment": 2.13504
+    },
+    {
+      "date": "2015-01-04T00:00:00",
+      "sentiment": 2.07016
+    },
+    {
+      "date": "2015-01-12T00:00:00",
+      "sentiment": 1.70782
+    },
+    {
+      "date": "2015-01-19T00:00:00",
+      "sentiment": 2.24874
+    },
+    {
+      "date": "2015-01-25T00:00:00",
+      "sentiment": 2.38502
+    },
+    {
+      "date": "2015-02-01T00:00:00",
+      "sentiment": 2.96646
+    },
+    {
+      "date": "2015-02-09T00:00:00",
+      "sentiment": 2.73784
+    },
+    {
+      "date": "2015-02-15T00:00:00",
+      "sentiment": 3.76041
+    },
+    {
+      "date": "2015-02-23T00:00:00",
+      "sentiment": 4.56876
+    },
+    {
+      "date": "2015-03-02T00:00:00",
+      "sentiment": 5.67191
+    },
+    {
+      "date": "2015-03-09T00:00:00",
+      "sentiment": 5.70451
+    },
+    {
+      "date": "2015-03-16T00:00:00",
+      "sentiment": 5.9395
+    },
+    {
+      "date": "2015-03-23T00:00:00",
+      "sentiment": 5.76226
+    },
+    {
+      "date": "2015-03-30T00:00:00",
+      "sentiment": 5.98391
+    },
+    {
+      "date": "2015-04-06T00:00:00",
+      "sentiment": 6.01209
+    },
+    {
+      "date": "2015-04-13T00:00:00",
+      "sentiment": 5.9407
+    },
+    {
+      "date": "2015-04-19T00:00:00",
+      "sentiment": 5.47006
+    },
+    {
+      "date": "2015-04-27T00:00:00",
+      "sentiment": 5.45399
+    },
+    {
+      "date": "2015-05-04T00:00:00",
+      "sentiment": 5.48301
+    },
+    {
+      "date": "2015-05-11T00:00:00",
+      "sentiment": 5.88393
+    },
+    {
+      "date": "2015-05-18T00:00:00",
+      "sentiment": 5.93306
+    },
+    {
+      "date": "2015-05-24T00:00:00",
+      "sentiment": 5.85721
+    },
+    {
+      "date": "2015-06-01T00:00:00",
+      "sentiment": 5.88869
+    },
+    {
+      "date": "2015-06-07T12:02:55",
+      "sentiment": 5.57484
+    },
+    {
+      "date": "2015-06-14T00:00:00",
+      "sentiment": 5.49048
+    },
+    {
+      "date": "2015-06-22T00:00:00",
+      "sentiment": 5.53569
+    },
+    {
+      "date": "2015-06-28T06:37:27",
+      "sentiment": 5.68002
+    },
+    {
+      "date": "2015-07-05T00:00:00",
+      "sentiment": 6.01496
+    },
+    {
+      "date": "2015-07-13T00:00:00",
+      "sentiment": 5.7826
+    },
+    {
+      "date": "2015-07-19T18:05:04",
+      "sentiment": 5.73098
+    },
+    {
+      "date": "2015-07-26T00:00:00",
+      "sentiment": 5.50395
+    },
+    {
+      "date": "2015-08-03T00:00:00",
+      "sentiment": 5.48183
+    }
+  ],
+  "general_info": {
+    "Capital": "Washington DC",
+    "Dialing code": "+1",
+    "Population": "123 Million",
+    "President": "Barack Obama"
+  }
+}

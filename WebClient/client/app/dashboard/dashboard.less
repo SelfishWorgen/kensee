@@ -1,0 +1,277 @@
+@heighlightBackground: #F5F5F3;
+
+.container-dashboard
+{
+  width: 100%;
+  min-width: 1300px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container
+{
+  width: 1219px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.country-select
+{
+  float: left;
+  margin-top: 25px;
+  height: 50px;
+  select {
+    background: white;
+    width: 234px;
+    padding: 5px;
+    padding-left: 15px;
+    margin-left: 45px;
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid #DAD9D9;
+    height: 50px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+  }
+  select:focus {
+    outline:none;
+  }
+
+  .chev-down {
+    color: @kenseeGreen;
+    font-size: 12px;
+
+    margin-top: -30px;
+    margin-left: -30px;
+    pointer-events: none;
+    background-color: #fff;
+    padding-right: 5px;
+  }
+}
+
+.location-icon
+{
+  z-index: 2;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: @kenseeGreen;
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+  img
+  {
+    margin-top: 8px;
+    margin-left: 10px;
+  }
+}
+.date-range-section
+{
+  float: right;
+  margin-top: 30px;
+  width: 380px;
+  button
+  {
+    float: left;
+  }
+  div
+  {
+    float: left;
+  }
+  button:focus {outline:0;}
+}
+
+.first-graph-line
+{
+  height: 345px;
+  border: 1px solid #DAD9D9;
+  -moz-border-radius:5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.sentiment-graph
+{
+  width: 823px;
+  float: left;
+}
+
+.general-info
+{
+  float: left;
+  width: 394px;
+  height: 100%;
+  background-image: -o-linear-gradient(right, #EDEDED 0%, #FDFDFD 5%);
+  background-image: -moz-linear-gradient(right, #EDEDED 0%, #FDFDFD 5%);
+  background-image: -webkit-linear-gradient(right, #EDEDED 0%, #FDFDFD 5%);
+  background-image: -ms-linear-gradient(right, #EDEDED 0%, #FDFDFD 5%);
+  background-image: linear-gradient(to right, #EDEDED 0%, #FDFDFD 5%);
+  padding: 20px 40px;
+}
+
+.general-info-header
+{
+  margin-bottom: 20px;
+}
+
+.general-info-line
+{
+  line-height: 24px;
+  color: #666666;
+  span
+  {
+    color: #999999;
+  }
+}
+
+.second-graph-line
+{
+  height: 393px;
+}
+
+.small-graph
+{
+  float:left;
+  width: 390px;
+  height: 301px;
+  border: 1px solid #DAD9D9;
+  -moz-border-radius:5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 24px;
+}
+
+.middle-graph
+{
+  margin-left: 25px;
+  margin-right: 24px;
+}
+
+.highlights-section {
+  background: #F5F5F3;
+  height: 431px;
+}
+
+.hightlight
+{
+  width: 352px;
+  float: left;
+  .highlight-header
+  {
+    margin-top: 32px;
+//    color: #999999;
+    color: @kenseeGreen;
+    font-size: 16px;
+    height: 32px;
+  }
+  .highlight-title
+  {
+    color: #333333;
+    font-size: 14px;
+    height: 70px;
+    overflow:hidden;
+    p
+    {
+      margin: 0;
+    }
+  }
+  .highlight-date
+  {
+    color: #999999;
+    font-size: 14px;
+  }
+
+  .highlight-title:before
+  {
+    content:"";
+    background: #EEEEEE;
+    display: block;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    height: 1px;
+  }
+
+}
+
+.highlights-middle
+{
+  margin-left: 63px;
+  margin-right: 63px;
+}
+
+// -----------------
+//ellipsis - CSS trick for multi-line ellipsis support
+
+.highlight-link:hover
+{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.line-clamp {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.c3-legend-background
+{
+  opacity: 0 !important;
+}
+
+.graph-title
+{
+  z-index: 2;
+  padding-left: 25px;
+  padding-top: 25px;
+  position: absolute;
+}
+
+.dropdown-title
+{
+  select {
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.7, #F2F2F2),
+      color-stop(1, #FFFFFF)
+    );
+    background-image: -o-linear-gradient(top, #F2F2F2 0%, #FFFFFF 100%);
+    background-image: -moz-linear-gradient(top, #F2F2F2 0%, #FFFFFF 100%);
+    background-image: -webkit-linear-gradient(top, #F2F2F2 0%, #FFFFFF 100%);
+    background-image: -ms-linear-gradient(top, #F2F2F2 0%, #FFFFFF 100%);
+    background-image: linear-gradient(to top, #F2F2F2 0%, #FFFFFF 100%);
+    width: 163px;
+    padding: 5px;
+    padding-left: 15px;
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid #DAD9D9;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+  }
+  select:focus {
+    outline:none;
+  }
+
+  .chev-down {
+    color: @kenseeGreen;
+    font-size: 12px;
+    margin-top: -30px;
+    margin-left: -30px;
+    pointer-events: none;
+    padding-right: 5px;
+  }
+}
+
+.small-chart-no-tick
+{
+  .tick line{ opacity: 0; }
+}
+

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Article App</title>
+</head>
+<body>
+
+  <div>
+    <h2>All Articles</h2>
+    <ul id="articles" />
+  </div>
+  <div>
+    <h2>Search by ID</h2>
+    <input type="text" id="prodId" size="5" />
+    <input type="button" value="Search" onclick="find();" />
+    <p id="article" />
+  </div>
+
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+  <script>
+      var uri = 'api/articles';
+      var uri1 = 'api/articles/context/paris';
+      var uri2 = 'api/login';
+      var uri3 = 'api/version';
+      var uri4 = 'api/dashboard_data/country/United States';
+
+      $.getJSON(uri2 + '/' + 'test' + '/' + 'test')
+        .done(function (data) {
+            if (data == 0)
+            {
+                $('#article').text('Error: illegal user name or password');
+                alert("error");
+            }
+            })
+        .fail(function (jqXHR, textStatus, err) {
+            $('#article').text('Error: ' + err);
+    });
+      $.getJSON(uri3)
+   .done(function (data) {
+       if (data == 0) {
+           $('#article').text('Error: illegal user name or password');
+           alert("error");
+       }
+       else
+           alert(data);
+   })
+   .fail(function (jqXHR, textStatus, err) {
+       $('#article').text('Error: ' + err);
+   });
+      $(document).ready(function () {
+          // Send an AJAX request
+          $.getJSON(uri)
+              .done(function (data) {
+                  $.each(data, function (key, item) {
+                      // Add a list item for the product.
+                      $('<li>', { text: formatItem(item) }).appendTo($('#articles'));
+                  });
+              });
+      });
+
+      function formatItem(item) {
+          return item.article_id + ":" + item.date + ":" + item.topic + ': ' + item.property + ': ' + item.company + ' :  ' + item.source + ' : ' + item.country + ': ' + item.city + ': ' + item.sentiment;
+      }
+
+      function formatItem1(item) {
+          return item.url + ': ' + item.date + ":" + item.content;
+      }
+
+      function find() {
+          var id = $('#prodId').val();
+          $.getJSON(uri4)
+              .done(function (data) {
+                  $.each(data, function (key, item) {
+                      // Add a list item for the product.
+                      $('<li>', { text: formatItem(item) }).appendTo($('#articles'));
+                  });
+              })
+              .fail(function (jqXHR, textStatus, err) {
+                  $('#article').text('Error: ' + err);
+              });
+      }
+
+      function find1() {
+          var id = $('#prodId').val();
+          $.getJSON(uri + '/' + id)
+              .done(function (data) {
+                      $('<li>', { text: formatItem(data) }).appendTo($('#articles'));
+              })
+              .fail(function (jqXHR, textStatus, err) {
+                  $('#article').text('Error: ' + err);
+              });
+      }
+  </script>
+</body>
+</html>

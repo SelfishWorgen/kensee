@@ -1,0 +1,13 @@
+C:\tmp\KenseeAPI\KenseeAPI\bin\Newtonsoft.Json.dll
+C:\tmp\KenseeAPI\KenseeAPI\bin\System.Net.Http.Formatting.dll
+C:\tmp\KenseeAPI\KenseeAPI\bin\System.Web.Http.dll
+C:\tmp\KenseeAPI\KenseeAPI\bin\System.Web.Http.WebHost.dll
+C:\tmp\KenseeAPI\KenseeAPI\bin\Newtonsoft.Json.xml
+C:\tmp\KenseeAPI\KenseeAPI\bin\System.Net.Http.Formatting.xml
+C:\tmp\KenseeAPI\KenseeAPI\bin\System.Web.Http.xml
+C:\tmp\KenseeAPI\KenseeAPI\bin\System.Web.Http.WebHost.xml
+C:\tmp\KenseeAPI\KenseeAPI\bin\KenseeAPI.dll
+C:\tmp\KenseeAPI\KenseeAPI\bin\KenseeAPI.pdb
+C:\tmp\KenseeAPI\KenseeAPI\obj\Debug\KenseeAPI.dll
+C:\tmp\KenseeAPI\KenseeAPI\obj\Debug\KenseeAPI.pdb
+C:\tmp\KenseeAPI\KenseeAPI\obj\Debug\KenseeAPI.csprojResolveAssemblyReference.cache

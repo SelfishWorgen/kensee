@@ -1,0 +1,97 @@
+{
+  "highlights": [
+    {
+      "Date":"11/08/2015",
+      "Title":"RioCan REIT threatens legal action to recoup ‘hundreds of millions’ in lost rent from Target Canada’s U.S. parent asdfklads  lkasjd ;laksdj ;lkasdj asdsalkjasd",
+      "Topic":"Rent"
+    },
+    {
+      "Date":"10/08/2015",
+      "Title":"Plaza Retail REIT Reports Strong Results for the Six Months Ended June 30, 2015 ",
+      "Topic":"Rent"
+    },
+    {
+      "Date":"10/08/2015",
+      "Title":"Plaza Retail REIT Reports Strong Results for the Six Months Ended June 30, 2015",
+      "Topic":"Construction"
+    },
+    {
+      "Date":"10/08/2015",
+      "Title":"Hudson’s Bay Company and RioCan REIT Close First Tranche of Real Estate Joint Venture",
+      "Topic":"Rent"
+    },
+    {
+      "Date":"10/08/2015",
+      "Title":"Morguard proposes a new hotel, apartment tower for prime downtown Ottawa location",
+      "Topic":"Construction"
+    },
+    {
+      "Date":"11/08/2015",
+      "Title":"PROREIT to Acquire Money Losing Boulevard Industrial REIT in Friendly Takeover One Year After Its Launch",
+      "Topic":"Buy/Sell"
+    },
+    {
+      "Date":"10/08/2015",
+      "Title":"With an eye towards future acquisitions, CPPIB buys 60% stake in Minto’s Toronto rental property",
+      "Topic":"Buy/Sell"
+    },
+    {
+      "Date":"10/08/2015",
+      "Title":"Automotive Properties REIT Completes its’ C$75 million IPO",
+      "Topic":"Buy/Sell"
+    },
+    {
+      "Date":"07/08/2015",
+      "Title":"First Capital Realty Issues Its Fifth Corporate Responsibility and Sustainability (CRS) Report",
+      "Topic":"Construction"
+    }
+  ],
+  "market_sentiment": [
+    {
+      "Date": "04-08-2015",
+      "value": 123
+    },
+    {
+      "Date": "01-08-2015",
+      "value": 111
+    }
+  ],
+  "comparison_data": [
+    {
+      "property": "Residential",
+      "Date": "04-08-2015",
+      "Buy/Sell": 4,
+      "Construction": 8
+    },
+    {
+      "property": "Residential",
+      "Date": "01-08-2015",
+      "Buy/Sell": 4,
+      "Construction": 8
+    },
+    {
+      "property": "Industrial",
+      "Date": "04-08-2015",
+      "Buy/Sell": 4,
+      "Construction": 8
+    },
+    {
+      "property": "Industrial",
+      "Date": "01-08-2015",
+      "Buy/Sell": 4,
+      "Construction": 8
+    }
+  ],
+  "macro": [
+    {
+      "Date": "04-08-2015",
+      "employment": 5.6,
+      "Inflation": 4.3
+    },
+    {
+      "Date": "01-08-2015",
+      "employment": 5.6,
+      "Inflation": 4.3
+    }
+  ]
+}
