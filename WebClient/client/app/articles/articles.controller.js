@@ -22,8 +22,9 @@ var multiValueSearch = function(searchTerm, cellValue) {
 };
 
 angular.module('kenseeApp')
-  .controller('ArticlesCtrl', function ($scope, $http, uiGridConstants, uiGridExporterConstants, $window, $document, SERVER_URL) {
-    $scope.gridBusy = $http.get(SERVER_URL + 'articles')
+  .controller('ArticlesCtrl', function ($scope, $http, uiGridConstants, uiGridExporterConstants, $window, $document, SERVER_URL, $timeout) {
+    //$scope.gridBusy = $http.get('http://localhost:9000/data_last.json') //SERVER_URL + 'articles'
+    $scope.gridBusy = $http.get(SERVER_URL + 'articles') //
       .success(function(data) {
         $scope.articlesData = data;
         $scope.articlesData = $scope.articlesData.map(function(article){
@@ -32,17 +33,31 @@ angular.module('kenseeApp')
         });
         $scope.gridOptions.data = $scope.articlesData;
         $scope.dateRangeSelected($scope.dateRange); //for the pagination to get refreshed
+        //$timeout(function(){
+        //  $scope.allowCalculateExecution = true;
+        //},0);
+
+
       });
 
 
-    $scope.DATE_COL = 1;
-    $scope.COMPANY_COL = 3;
-    $scope.TOPIC_COL = 4;
-    $scope.COUNTRY_COL = 5;
-    $scope.CITY_COL = 6;
-    $scope.PROPERTY_COL = 7;
-    $scope.SENTIMENT_COL = 8;
-    $scope.SOURCE_COL = 9;
+    //$scope.DATE_COL = 1;
+    //$scope.COMPANY_COL = 3;
+    //$scope.TOPIC_COL = 4;
+    //$scope.COUNTRY_COL = 5;
+    //$scope.CITY_COL = 6;
+    //$scope.PROPERTY_COL = 7;
+    //$scope.SENTIMENT_COL = 8;
+    //$scope.SOURCE_COL = 9;
+
+    $scope.DATE_COL = 0;
+    $scope.COMPANY_COL =2;
+    $scope.TOPIC_COL = 3;
+    $scope.COUNTRY_COL =4;
+    $scope.CITY_COL = 5;
+    $scope.PROPERTY_COL = 6;
+    $scope.SENTIMENT_COL = 7;
+    $scope.SOURCE_COL = 8;
 
     //not sure I need to init this but what the hack...
     $scope.article =  {
@@ -55,7 +70,8 @@ angular.module('kenseeApp')
     $scope.gridOptions = {
       enableFiltering: true,
       enableRowSelection: true,
-      enableSelectAll: true,
+      enableRowHeaderSelection : false,
+      enableSelectAll: false,
       selectionRowHeaderWidth: 30,
       rowHeight: 54,
       headerRowHeight: 40,
@@ -66,7 +82,45 @@ angular.module('kenseeApp')
       enableVerticalScrollbar: uiGridConstants.scrollbars.NEVER,
       paginationPageSize: 20,
       paginationPageSizes: [],
-      rowTemplate: '<div ng-click="grid.appScope.showArticle(row)" ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" class="ui-grid-cell row-bottom-border" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></div>'
+      rowTemplate: '<div ng-mouseover="hoverArticle()" ng-click="grid.appScope.showArticle(row)" ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" class="ui-grid-cell row-bottom-border" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></div>'
+      //rowTemplate: '<table><tr><td><table><tr><td ng-click="grid.appScope.showArticle(row)" ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" class="ui-grid-cell row-bottom-border" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></td></tr></table></td></tr></table>'
+    };
+
+    $scope.showFilters = false;
+    $scope.allowCalculateExecution = false;
+    $scope.toggleFilters = function(){
+      $scope.showFilters = !$scope.showFilters;
+      $scope.allowCalculateExecution = true;
+    };
+
+    $scope.calculateRows = function(arg){
+      //if(!$scope.allowCalculateExecution) return false;
+      //$timeout(function() {
+        var rows = $('.ui-grid-row');
+        var summ = 80;
+        rows.each(function(ind, row){
+        //for (var i = 0; i <= rows.length; i++) {
+          var _this = $(row);
+          //if (_this.hasClass('ui-grid-row-selected')) return false;
+          var title = _this.find('.ui-grid-cell:eq(1)');
+          //var imageClass = title.find('.title-column').attr('data-topic').split(',')[0].toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
+          if(title.find('.title-column').attr('data-topic')) {
+            title.find('img')[0].className = title.find('.title-column').attr('data-topic').split(',')[0].toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
+          } else title.find('img').hide();
+          //title.addClass('fullHeight');
+          var rowHeight = title.height();
+          _this.find('.ui-grid-cell').height(rowHeight);
+          _this.height(title.outerHeight());
+          summ += title.outerHeight();
+
+        //}
+        });
+
+        $('.myGrid').height(summ);
+      $scope.allowCalculateExecution = false;
+
+      return arg;
+      //},100);
     };
 
     $scope.gridOptions.columnDefs = [
@@ -97,8 +151,8 @@ angular.module('kenseeApp')
         }
       },
       {
-         name: 'title', displayName: 'HEADLINE'
-          , cellTemplate: '<div tooltip="{{ row.entity.snippet }}" tooltip-popup-delay="500" tooltip-placement="top" tooltip-append-to-body="true"><div class="ui-grid-cell-contents title-column">{{ row.entity.title }}</div></div>'
+         name: 'title', displayName: 'HEADLINE', cellClass: "fullHeight"
+          , cellTemplate: '<div data-topic="{{ row.entity.topic }}" class="ui-grid-cell-contents title-column"><div class="triangle"><img src="assets/images/icons.png" ng-class="getIcon(row.entity.topic)"></div><span class="title">{{ row.entity.title }}</span><div class="snippet">{{ row.entity.snippet }}</div></div>'
       },
       { name: 'company', displayName: 'COMPANY', visible: false, filter: { condition: multiValueSearch } },
       { name: 'topic', displayName: 'TOPIC', visible: false, filter: {condition:multiValueSearch}},
@@ -111,18 +165,67 @@ angular.module('kenseeApp')
       { name: 'url', displayName: 'URL', visible: false }
     ];
 
+    $(document).on('click', '.ui-grid-pager-next', function(){
+
+    });
+
+/*
+    $(document).on('mouseenter', '.ui-grid-row', function(event){
+
+      var _this = $(this);
+      if(_this.hasClass('ui-grid-row-selected')) return false;
+      var title = $(_this.find('.ui-grid-cell')[1]);
+      title.addClass('fullHeight');
+      var rowHeight = title.height();
+      _this.find('.ui-grid-cell').height(rowHeight);
+    });
+
+    $(document).on('click', '.ui-grid-row', function(event){
+
+      var _this = $(this);
+      if(_this.hasClass('ui-grid-row-selected')) return false;
+      $('.ui-grid-row').removeClass('ui-grid-row-selected');
+      _this.addClass('ui-grid-row-selected');
+
+      var title = $(_this.find('.ui-grid-cell')[1]);
+      title.addClass('fullHeight');
+      var rowHeight = title.height();
+      _this.find('.ui-grid-cell').height(rowHeight);
+    });
+
+    $(document).on('mouseleave', '.ui-grid-row', function(event){
+      var _this = $(this);
+      if(_this.hasClass('ui-grid-row-selected')) return false;
+      $(_this.find('.ui-grid-cell')[1]).removeClass('fullHeight');
+      _this.find('.ui-grid-cell').innerHeight(54);
+    });
+*/
+    $scope.hoverArticle = function(event){
+      alert(1);
+    };
+
     $scope.gridOptions.exporterFieldCallback = function ( grid, row, col, value ){
       if ( col.name === 'date' ){
         var date = moment(value);
         value = date.format('DD/MM/YYYY');
       }
       return value;
-    }
+    };
+
+    $scope.getIcon = function(str){
+      return str.split(',')[0];
+    };
+
+
     $scope.endDate = moment(); //now
     $scope.startDate = moment().subtract(1, "month");
-    $scope.gridOptions.multiSelect = true;
+    $scope.gridOptions.multiSelect = false;
 
     $scope.dateRange = "last_month";
+    $scope.getClass = function(text){
+      return text.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
+    };
+
     $scope.dateRangeSelected = function(value)
     {
       $scope.endDate = moment(); //in all cases endDate is today
@@ -146,52 +249,77 @@ angular.module('kenseeApp')
       {
         $scope.startDate = moment().subtract(1, "year");
       }
-    }
-
-    function truncateTags(element) {
+    };
+    var flag = true;
+    function truncateTags(element, flag) {
+      var add = !flag ? '/&er' : '';
+      flag = true;
       var tags_max_size = 22;
-      return String(element).trunc(tags_max_size);
+      return String(element).trunc(tags_max_size) + add;
     }
     $scope.prepareTags = function(entity)
     {
       var tagsArray = [];
       if (entity.country)
       {
-        tagsArray.push.apply(tagsArray, entity.country.split(',').map(truncateTags));
+        //tagsArray.push.apply(tagsArray, entity.country.split(',').map(truncateTags));
+        entity.country.split(',').forEach(function(item){
+          tagsArray.push(['country', item]);
+        })
       }
       if (entity.city)
       {
-          var y = entity.city.split('|').map(truncateTags);
+
+        entity.city.split('|').forEach(function(item){
+          tagsArray.push(['city', item]);
+
+        });
+
+       /*   var y = entity.city.split('|').map(truncateTags);
           for (var i = 0; i < y.length; i++)
           {
               var nm = y[i];
             if (tagsArray.indexOf(nm) == -1)
               tagsArray.push.apply(tagsArray, [nm]);
-          }
+          }*/
 //        tagsArray.push.apply(tagsArray, entity.city.split('|').map(truncateTags));
       }
       if (entity.property)
       {
-        tagsArray.push.apply(tagsArray, entity.property.split(',').map(truncateTags));
+        //tagsArray.push.apply(tagsArray, entity.property.split(',').map(truncateTags));
+        entity['property'].split(',').forEach(function(item){
+          tagsArray.push(['property', item]);
+        })
       }
       if (entity.topic)
       {
-        tagsArray.push.apply(tagsArray, entity.topic.split(',').map(truncateTags));
+        //tagsArray.push.apply(tagsArray, entity.topic.split(',').map(function(){flag=false; truncateTags;} ));
+        entity.topic.split(',').forEach(function(item){
+          tagsArray.push(['topic', item]);
+        })
       }
       if (entity.company)
       {
-        tagsArray.push.apply(tagsArray, entity.company.split('|').map(truncateTags));
+        //tagsArray.push.apply(tagsArray, entity.company.split('|').map(truncateTags));
+        entity.company.split(',').forEach(function(item){
+          tagsArray.push(['company', item]);
+        })
       }
       if (entity.sentiment)
       {
-        tagsArray.push.apply(tagsArray, entity.sentiment.split(',').map(truncateTags));
+        //tagsArray.push.apply(tagsArray, entity.sentiment.split(',').map(truncateTags));
+        entity.sentiment.split(',').forEach(function(item){
+          tagsArray.push(['sentiment', item]);
+        })
       }
-      tagsArray = tagsArray.filter(function(n){ return n !== "" });
+      //tagsArray = tagsArray.filter(function(n){ return n !== "" });
       return tagsArray;
-    }
+    };
 
     $scope.showArticle = function(rowItem)
     {
+
+      $scope.activeArticle = rowItem.entity.article_id;
       $http.get(SERVER_URL + 'articles/' + rowItem.entity.article_id)
         .success(function(data) {
           $scope.article.url = data.url;
@@ -201,23 +329,35 @@ angular.module('kenseeApp')
           $scope.article.date = data.date;
           $scope.article.tags = $scope.prepareTags(rowItem.entity);
           $scope.DisplayArticle = true;
+          //calculateRows($scope.DisplayArticle);
           //it's a trick. articles-div still isn't visible, but grid-main is in the same height...
           var articleElement = angular.element(document.getElementById('grid-main-div'));
           $document.duScrollTo(articleElement,0,250);
+          //$scope.allowCalculateExecution = true;
         });
-    }
+    };
 
     $scope.gridOptions.onRegisterApi = function (gridApi) {
       $scope.gridApi = gridApi;
-    }
+
+      $scope.gridApi.grid.registerRowBuilder(function(a){
+        //console.log(111);
+      });
+      //gridApi.onGridRegisterApi()
+
+
+    };
+    //$scope.gridApi.buildColumnDefsFromData = function(gridApi){
+    //  console.log(123);
+    //};
 
     $scope.$watch("startDate", function(newValue, oldValue){
-      $scope.gridApi.grid.columns[$scope.DATE_COL].filters[0].term = newValue;
+      $scope.gridApi.grid.columns[$scope.DATE_COL] ? $scope.gridApi.grid.columns[$scope.DATE_COL].filters[0].term = newValue : null;
       $scope.gridRefresh();
     });
 
     $scope.$watch("endDate", function(newValue, oldValue){
-      $scope.gridApi.grid.columns[$scope.DATE_COL].filters[1].term = newValue;
+      $scope.gridApi.grid.columns[$scope.DATE_COL] ? $scope.gridApi.grid.columns[$scope.DATE_COL].filters[1].term = newValue : null;
       $scope.gridRefresh();
     });
 
@@ -312,7 +452,7 @@ angular.module('kenseeApp')
       $scope.selected_countries.forEach(function(country) {
         new_filter_tags.push({'value': country, 'type': 'country'});
       });
-      var cityFilter = $scope.gridApi.grid.columns[$scope.CITY_COL].filters[0].term;
+      var cityFilter = $scope.gridApi.grid.columns[$scope.CITY_COL] ? $scope.gridApi.grid.columns[$scope.CITY_COL].filters[0].term : null;
       if (cityFilter)
       {
         new_filter_tags.push({'value': cityFilter, 'type': 'city'});
@@ -323,12 +463,12 @@ angular.module('kenseeApp')
       $scope.selected_topics.forEach(function(topic) {
         new_filter_tags.push({'value': topic, 'type': 'topic'});
       });
-      var sourceFilter = $scope.gridApi.grid.columns[$scope.SOURCE_COL].filters[0].term;
+      var sourceFilter = $scope.gridApi.grid.columns[$scope.SOURCE_COL] ? $scope.gridApi.grid.columns[$scope.SOURCE_COL].filters[0].term : null;
       if (sourceFilter)
       {
         new_filter_tags.push({'value': sourceFilter, 'type': 'source'});
       }
-      var companyFilter = $scope.gridApi.grid.columns[$scope.COMPANY_COL].filters[0].term;
+      var companyFilter = $scope.gridApi.grid.columns[$scope.COMPANY_COL] ? $scope.gridApi.grid.columns[$scope.COMPANY_COL].filters[0].term : null;
       if (companyFilter)
       {
         new_filter_tags.push({'value': companyFilter, 'type': 'company'});

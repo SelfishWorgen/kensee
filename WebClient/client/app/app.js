@@ -44,6 +44,7 @@ angular.module('kenseeApp', [
     $locationProvider.html5Mode(true);
 
   })
+  //.constant('SERVER_URL','http://localhost:9000/')  //production
   .constant('SERVER_URL','http://50.22.216.6/KenseeAPI/api/')  //production
  // .constant('SERVER_URL',"http://158.85.229.36/KenseeAPI/api/")     // development server
 //  .constant('SERVER_URL',"http://173.193.211.219/KenseeAPI/api/")     // testing

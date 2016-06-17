@@ -11,15 +11,107 @@
 //TODO: investigate how to do it the right way
 .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell
 {
-  background-color: @kenseeLightGray !important;
+  background-color: @kenseeLightWhite;
 }
 .ui-grid-row.ui-grid-row-selected > [ui-grid-row] >.ui-grid-row-header-cell
 {
-  background-color: @kenseeGreen !important;
+  background-color: @kenseeLightWhite;
 }
 
-.ui-grid-row:nth-child(odd):hover .ui-grid-cell{background:white}
-.ui-grid-row:nth-child(even):hover .ui-grid-cell{background:white}
+.ui-grid-row:nth-child(odd):hover .ui-grid-cell,
+.ui-grid-row:nth-child(even):hover .ui-grid-cell{
+  background:#e0eee7;
+
+
+    .snippet{
+      //display: block;
+    }
+
+}
+
+.ui-grid-row{
+  .ui-grid-cell{
+    position: relative;
+
+    span.title{
+      font-weight: 900;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .triangle{
+      position: absolute;
+      top: 0; left: 0;
+      width: 0;
+      height: 0;
+      border-top: 10px solid #3cb988;
+      border-right: 10px solid transparent;
+
+      img{
+        display: none;
+      }
+    }
+    //transition: .5s;
+    .ui-grid-cell-contents {
+      white-space: normal !important;
+      .snippet {
+        //transition: .5s;
+        //display: none;
+      }
+    }
+  }
+}
+
+.ui-grid-row .ui-grid-cell.fullHeight{
+  height: auto !important;
+}
+
+
+.ui-grid-row:nth-child(even).ui-grid-row-selected .ui-grid-cell,
+.ui-grid-row:nth-child(odd).ui-grid-row-selected .ui-grid-cell{
+  background: @kenseeLightWhite;
+  color: #000;
+  //height: auto !important;
+
+
+  .triangle{
+    border-top: 50px solid #3cb988;
+    border-right: 50px solid transparent;
+
+    img{
+      display: block;
+      object-fit: cover;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: -45px;
+      left: 3px;
+    }
+  }
+
+  span.title{
+    padding-left: 50px;
+  }
+
+  .ui-grid-cell-contents{
+    white-space: normal !important;
+  }
+}
+
+.ui-grid-contents-wrapper .ui-grid-pinned-container-left .ui-grid-render-container-left .ui-grid-row:nth-child(odd):hover .ui-grid-cell{
+  background: #3cb988 !important;
+  .ui-grid-selection-row-header-buttons{
+    opacity: 1;
+  }
+}
+
+
+.ui-grid-contents-wrapper .ui-grid-pinned-container-left .ui-grid-render-container-left .ui-grid-row:nth-child(even):hover .ui-grid-cell{
+  background: #3cb988 !important;
+  .ui-grid-selection-row-header-buttons{
+    opacity: 1;
+  }
+}
 
 .footer {
     text-align: center;
@@ -30,6 +122,35 @@
 
 .search-button:focus {
   outline: none;
+}
+
+img{
+  &.buy-sell{
+    object-position: -56px 0;
+  }
+  &.rent{
+    object-position: -18px 0;
+  }
+  &.construction{
+    object-position: -38px 0;
+  }
+  &.financial-update{
+    object-position: 2px 0;
+  }
+  &.revenue-increase{
+    object-position: -76px 0;
+  }
+}
+
+.tag-single
+{
+  img{
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+
+  }
 }
 
 .search-left-side
@@ -252,8 +373,39 @@
 .filters-section { //fixed size
   float: left;
   width: 235px;
+  margin-left: -200px;
   min-height: 50px;
+  //transition: .5s;
   background-color: #FCFCFC;
+  position: relative;
+  .fa.fa-filter{
+    color: @kenseeGreen;
+  }
+  &.active{
+    margin-left: -0px;
+  }
+
+  .close-filters{
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+
+  .show-filters{
+    position: absolute;
+    height: 100%;
+    width: 35px;
+    top: 0;
+    right: 0;
+    background: #fff;
+    z-index: 9999;
+    padding-top: 15px;
+    border-top: 1px solid #e2e2e1;
+  }
+
+}
+.ui-grid-header-cell .ui-grid-sort-priority-number{
+  display: none;
 }
 
 .article-section { //fixed size
@@ -410,6 +562,8 @@ input[type=checkbox] {
   margin-right: 23px;
   margin-bottom: 10px;
   color: @kenseeGreen;
+
+
 }
 
 .first-filter-section
@@ -510,11 +664,39 @@ input[type=checkbox] {
 .ui-grid-pager-count-container
 {
   float: none !important;
+
+
 }
+
+.ui-grid-pager-container{
+  margin-top: 5px;
+  margin-bottom: -5px;
+}
+
+.ui-grid-pager-control{
+  margin-top: -8px;
+}
+
+.ui-grid-pager-row-count-label{
+  margin-top: -6px;
+  display: inline-block;
+  vertical-align: super;
+
+}
+
+
 
 .ui-grid-pager-count
 {
   float: none !important;
+  > span{
+    margin-left: 14px;
+    margin-bottom: 5px;
+    display: inline-block;
+    padding-bottom: 5px;
+    float: left;
+    line-height: 13px;
+  }
 }
 
 .ui-grid-pager-panel
@@ -581,6 +763,7 @@ input[type=checkbox] {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
+    line-height: 25px;
   }
 }
 

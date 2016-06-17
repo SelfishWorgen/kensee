@@ -10,7 +10,7 @@
       </button>
     </form>
   </div>
-  <div class="search-right-side">
+  <!--<div class="search-right-side">
     <button class="text-button" ng-click="allSelected=true"
             ng-class="{true: 'green-text-button', false: 'gray-text-button'}[allSelected]">All</button>
     <div class="buttons-divider">|</div>
@@ -19,14 +19,15 @@
     <div class="export-button gradient-clickable" ng-click="exportToCSV()">
       EXPORT <img width="20" height="20" style="margin-left: 10px; margin-top:-5px;" src="assets/images/excel.png"/>
     </div>
-  </div>
+  </div>-->
 </div>
 <div class="main-screen">
   <div>
-    <div class="filters-section">
+    <div class="filters-section" ng-class="{true:'active', false:''}[showFilters === true]">
+      <div class="show-filters" ng-show="!showFilters"><i class="fa fa-filter close-filters" ng-click="toggleFilters()"></i></div>
       <div class="filter-main">
         <div class="side-section-header">
-          FILTER YOUR SEARCH
+          FILTER YOUR SEARCH <i class="fa fa-filter close-filters" ng-click="toggleFilters()"></i>
         </div>
         <div class="first-filter-section">
           <div class="filter-tags-section-headline">
@@ -177,7 +178,7 @@
       </div>
     </div>
     <!--order is reversed on purpose - the grid part is "what's left"-->
-    <div class="article-section" ng-show="DisplayArticle">
+    <div class="article-section" ng-show="calculateRows(DisplayArticle)">
       <div class="side-section-header">
         SUMMARY
         <span class="close-button" ng-click="closeArticle()"></span>
@@ -192,8 +193,8 @@
         <a href="{{article.url}}" target="_blank" class="article-read-more">Read More</a>
         <div class="tags-part">
           <ul class="tags">
-            <li ng-repeat="tag in article.tags">
-              {{tag}}
+            <li class="tag-single" ng-class="tag[0]" ng-repeat="tag in article.tags">
+              <img ng-class="getClass(tag[1])" ng-show="tag[0] == 'topic'" src="assets/images/icons.png">{{tag[1]}}
             </li>
           </ul>
         </div>
