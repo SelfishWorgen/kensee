@@ -9,7 +9,7 @@ angular.module('kenseeApp')
       AuthenticationService.Login($scope.username, $scope.password, function (response) {
         if (response) {
           AuthenticationService.SetCredentials($scope.username, $scope.password);
-          $location.path('/');
+          $location.path('/NewsRoom');
         } else {
           $scope.showError = true;
         }

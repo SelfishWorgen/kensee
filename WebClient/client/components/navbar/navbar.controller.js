@@ -3,14 +3,14 @@
 angular.module('kenseeApp')
   .controller('NavbarCtrl', function ($scope, $location, $cookieStore, AuthenticationService, $state) {
     $scope.menu = [
-      {
+/*      {
         'title': 'Dashboard',
         'link': '/',
         'disabled': false
-      },
+      },*/
       {
-        'title': 'Articles',
-        'link': '/articles',
+        'title': 'NewsRoom',
+        'link': '/NewsRoom',
         'disabled': false
       }
     ];

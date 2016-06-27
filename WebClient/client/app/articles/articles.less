@@ -36,6 +36,7 @@
     span.title{
       font-weight: 900;
       margin-bottom: 20px;
+      margin-top: 7px;
       display: block;
     }
 
@@ -51,6 +52,23 @@
         display: none;
       }
     }
+
+    .icons{
+      position: absolute;
+      right: 0; top: 0;
+
+      img{
+        display: inline-block;
+        object-fit: cover;
+        width: 20px;
+        height: 20px;
+        //position: absolute;
+        //top: 5px;
+        //right: 3px;
+      }
+    }
+
+
     //transition: .5s;
     .ui-grid-cell-contents {
       white-space: normal !important;
@@ -75,22 +93,24 @@
 
 
   .triangle{
-    border-top: 50px solid #3cb988;
-    border-right: 50px solid transparent;
+    //border-top: 50px solid #3cb988;
+    //border-right: 50px solid transparent;
 
-    img{
-      display: block;
-      object-fit: cover;
-      width: 20px;
-      height: 20px;
-      position: absolute;
-      top: -45px;
-      left: 3px;
-    }
+
   }
 
+  /*img{
+    display: block;
+    object-fit: cover;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+  }*/
+
   span.title{
-    padding-left: 50px;
+    //padding-left: 50px;
   }
 
   .ui-grid-cell-contents{

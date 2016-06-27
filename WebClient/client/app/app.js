@@ -22,15 +22,15 @@ angular.module('kenseeApp', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
       .state('articles', {
-        url: '/articles',
+        url: '/NewsRoom',
         controller: 'ArticlesCtrl',
         templateUrl: 'app/articles/articles.html'
       })
 
       .state('dashboard', {
-        url: '/',
-        controller: 'DashboardCtrl',
-        templateUrl: 'app/dashboard/dashboard.html'
+        url: '/NewsRoom',
+        controller: 'ArticlesCtrl',
+        templateUrl: 'app/articles/articles.html'
       })
 
       .state('login', {

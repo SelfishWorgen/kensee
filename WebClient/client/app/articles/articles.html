@@ -1,7 +1,27 @@
+<style>
+  .ui-grid-contents-wrapper .ui-grid-canvas .ui-grid-row {
+    height: auto !important;
+  }
+  .ui-grid-row > div {
+    display: table-row !important;
+  }
+
+  .ui-grid-contents-wrapper .ui-grid-canvas .ui-grid-row .ui-grid-cell {
+    display: table-cell !important;
+    float: none !important;
+    vertical-align: middle !important;
+    height: auto !important;
+  }
+
+  .ui-grid-contents-wrapper .ui-grid-canvas .ui-grid-row .ui-grid-cell .ui-grid-cell-contents {
+    white-space: inherit !important;
+  }
+</style>
+
 <div class="container-articles">
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="kensee-page-header">
+<div class="kensee-page-header" ng-click="test()">
   <div class="search-left-side">
     <form ng-submit="search()">
       <input class="search-input" ng-model="searchTerm" placeholder="Type keywords to search (location, company, etc.)">
@@ -178,7 +198,7 @@
       </div>
     </div>
     <!--order is reversed on purpose - the grid part is "what's left"-->
-    <div class="article-section" ng-show="calculateRows(DisplayArticle)">
+    <div class="article-section" ng-show="DisplayArticle">
       <div class="side-section-header">
         SUMMARY
         <span class="close-button" ng-click="closeArticle()"></span>

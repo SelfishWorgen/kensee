@@ -31,11 +31,12 @@ angular.module('kenseeApp')
           article['date'] = moment(article['date'],"DD-MM-YYYY").toDate();
           return article;
         });
+        $scope.articlesData.imgs = '<div class="topic"></div>';
         $scope.gridOptions.data = $scope.articlesData;
         $scope.dateRangeSelected($scope.dateRange); //for the pagination to get refreshed
-        //$timeout(function(){
-        //  $scope.allowCalculateExecution = true;
-        //},0);
+        $timeout(function(){
+          $scope.calculateRows();
+        },0);
 
 
       });
@@ -86,6 +87,7 @@ angular.module('kenseeApp')
       //rowTemplate: '<table><tr><td><table><tr><td ng-click="grid.appScope.showArticle(row)" ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" class="ui-grid-cell row-bottom-border" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></td></tr></table></td></tr></table>'
     };
 
+    $scope.readArticle = window.localStorage.getItem('articles');
     $scope.showFilters = false;
     $scope.allowCalculateExecution = false;
     $scope.toggleFilters = function(){
@@ -93,7 +95,19 @@ angular.module('kenseeApp')
       $scope.allowCalculateExecution = true;
     };
 
+    $scope.readArticles = window.localStorage.getItem('articles') ? JSON.parse(window.localStorage.getItem('articles')) : [];
+
+    function addReadMark(row){
+      if(!$scope.readArticles) return false;
+      var mark = $(row).find('.triangle');
+      mark.hide();
+      if($scope.readArticles.indexOf(parseInt($(row).find('.title-column').attr('data-id'))) != -1) mark.show();
+    }
+
     $scope.calculateRows = function(arg){
+      //console.log(1);
+
+      //var checked = JSON.parse(window.localStorage.getItem('articles'));
       //if(!$scope.allowCalculateExecution) return false;
       //$timeout(function() {
         var rows = $('.ui-grid-row');
@@ -103,14 +117,27 @@ angular.module('kenseeApp')
           var _this = $(row);
           //if (_this.hasClass('ui-grid-row-selected')) return false;
           var title = _this.find('.ui-grid-cell:eq(1)');
+          var icons = title.find('.icons');
+         addReadMark(row);
+          var imageClass = title.find('.title-column').attr('data-topic') ? title.find('.title-column').attr('data-topic').split(',') : [];
+          icons.find('img').remove();
+          imageClass.forEach(function(item){
+            var name = item.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
+            icons.append('<img src="assets/images/icons-dark.png" class="' + name + '" ng-class="getIcon(row.entity.topic)">');
+          });
+
+
           //var imageClass = title.find('.title-column').attr('data-topic').split(',')[0].toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
-          if(title.find('.title-column').attr('data-topic')) {
-            title.find('img')[0].className = title.find('.title-column').attr('data-topic').split(',')[0].toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
-          } else title.find('img').hide();
+
+          //if(title.find('.title-column').attr('data-topic')) {
+          //  title.find('img')[0].className = 'article-icon ' + title.find('.title-column').attr('data-topic').split(',')[0].toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
+          //} else title.find('img').hide();
+
           //title.addClass('fullHeight');
-          var rowHeight = title.height();
-          _this.find('.ui-grid-cell').height(rowHeight);
-          _this.height(title.outerHeight());
+
+          //var rowHeight = title.height();
+          //_this.find('.ui-grid-cell').height(rowHeight);
+          //_this.height(title.outerHeight());
           summ += title.outerHeight();
 
         //}
@@ -136,7 +163,6 @@ angular.module('kenseeApp')
           priority: 0
         },
         sortingAlgorithm: function (aDate, bDate) {
-          //debugger;
           var a=new Date(aDate);
           var b=new Date(bDate);
           if (a < b) {
@@ -152,7 +178,7 @@ angular.module('kenseeApp')
       },
       {
          name: 'title', displayName: 'HEADLINE', cellClass: "fullHeight"
-          , cellTemplate: '<div data-topic="{{ row.entity.topic }}" class="ui-grid-cell-contents title-column"><div class="triangle"><img src="assets/images/icons.png" ng-class="getIcon(row.entity.topic)"></div><span class="title">{{ row.entity.title }}</span><div class="snippet">{{ row.entity.snippet }}</div></div>'
+          , cellTemplate: '<div data-topic="{{ row.entity.topic }}" data-id="{{ row.entity.article_id }}" class="ui-grid-cell-contents title-column"><div class="triangle"></div><span class="title">{{ row.entity.title }}</span><div class="snippet">{{ row.entity.snippet }}</div><div class="icons"></div></div>'
       },
       { name: 'company', displayName: 'COMPANY', visible: false, filter: { condition: multiValueSearch } },
       { name: 'topic', displayName: 'TOPIC', visible: false, filter: {condition:multiValueSearch}},
@@ -200,10 +226,6 @@ angular.module('kenseeApp')
       _this.find('.ui-grid-cell').innerHeight(54);
     });
 */
-    $scope.hoverArticle = function(event){
-      alert(1);
-    };
-
     $scope.gridOptions.exporterFieldCallback = function ( grid, row, col, value ){
       if ( col.name === 'date' ){
         var date = moment(value);
@@ -222,6 +244,11 @@ angular.module('kenseeApp')
     $scope.gridOptions.multiSelect = false;
 
     $scope.dateRange = "last_month";
+
+    $scope.readCheck = function(){
+      console.log(1);
+    };
+
     $scope.getClass = function(text){
       return text.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
     };
@@ -272,7 +299,6 @@ angular.module('kenseeApp')
 
         entity.city.split('|').forEach(function(item){
           tagsArray.push(['city', item]);
-
         });
 
        /*   var y = entity.city.split('|').map(truncateTags);
@@ -316,8 +342,29 @@ angular.module('kenseeApp')
       return tagsArray;
     };
 
+    $scope.test = function(){
+      $timeout(function(){
+        $scope.DisplayArticle = !$scope.DisplayArticle;
+        $scope.calculateRows(true);
+      });
+
+    };
+
     $scope.showArticle = function(rowItem)
     {
+
+      //var temp = window.localStorage.getItem('articles') ? JSON.parse(window.localStorage.getItem('articles')) : [];
+
+      if($scope.readArticles.indexOf(rowItem.entity.article_id) == -1){
+        $scope.readArticles.push(rowItem.entity.article_id);
+        window.localStorage.setItem('articles', JSON.stringify($scope.readArticles));
+      }
+
+      var target = event.target.parentElement.parentElement.parentElement;
+      if($(target).hasClass('ui-grid-row-selected')) {
+        $scope.DisplayArticle = false;
+        return false;
+      }
 
       $scope.activeArticle = rowItem.entity.article_id;
       $http.get(SERVER_URL + 'articles/' + rowItem.entity.article_id)
@@ -329,6 +376,8 @@ angular.module('kenseeApp')
           $scope.article.date = data.date;
           $scope.article.tags = $scope.prepareTags(rowItem.entity);
           $scope.DisplayArticle = true;
+
+          addReadMark(target);
           //calculateRows($scope.DisplayArticle);
           //it's a trick. articles-div still isn't visible, but grid-main is in the same height...
           var articleElement = angular.element(document.getElementById('grid-main-div'));
@@ -339,6 +388,24 @@ angular.module('kenseeApp')
 
     $scope.gridOptions.onRegisterApi = function (gridApi) {
       $scope.gridApi = gridApi;
+
+      $scope.gridApi.core.on.renderingComplete($scope, function(){
+        //console.log(10);
+        //$timeout(function(){
+          $scope.calculateRows();
+        //});
+
+      });
+
+      //$scope.gridApi.pagination.on.paginationChanged($scope, function(){
+      //  $scope.calculateRows();
+      //});
+
+      $scope.gridApi.core.on.rowsRendered($scope, function(){
+        $timeout(function(){
+          $scope.gridApi.core.raise.renderingComplete();
+        });
+      });
 
       $scope.gridApi.grid.registerRowBuilder(function(a){
         //console.log(111);
@@ -375,6 +442,7 @@ angular.module('kenseeApp')
 
     $scope.closeArticle = function(){
       $scope.DisplayArticle = false;
+      $('.ui-grid-row').removeClass('ui-grid-row-selected');
     };
 
     $scope.selected_countries = [];
