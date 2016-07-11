@@ -1,0 +1,31 @@
+.navbar{background:#3cb988;}
+.navbar .navbar-brand img{max-height:25px;}
+.ace-nav > li > a{background-color:#2f986f;}
+.sidebar.no-sidebar {width: 0;}
+.sidebar.no-sidebar + .main-content {margin-left: 0;}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"]{vertical-align:middle;}
+
+#map-wrapper{
+    background:#fff;
+    padding:15px;
+    box-shadow: 0 0 3px #999;
+    margin-top:20px;
+}
+#map{
+    height:600px;
+    width:100%;
+}
+
+.sidebar ~ .footer .footer-inner{left:0;}
+@media (min-width: 1200px) {
+  .container.main-container .sidebar ~ .footer .footer-inner {
+    margin-left: 0;
+    width: 100%;
+    left:0;
+  }
+}
+
+.chart{width:100%;height:400px;}
+
+#errorMsg{padding-top:20px;}

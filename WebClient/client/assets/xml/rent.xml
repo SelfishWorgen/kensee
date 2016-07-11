@@ -1,0 +1,69 @@
+﻿<root>
+    <items>
+        <item year="2011Q1" area="City" value="0.79"></item>
+        <item year="2011Q2" area="City" value="0.66"></item>
+        <item year="2011Q3" area="City" value="0.98"></item>
+        <item year="2011Q4" area="City" value="0.99"></item>
+        <item year="2012Q1" area="City" value="0.8"></item>
+        <item year="2012Q2" area="City" value="1.21"></item>
+        <item year="2012Q3" area="City" value="0.84"></item>
+        <item year="2012Q4" area="City" value="1.12"></item>
+        <item year="2013Q1" area="City" value="1.05"></item>
+        <item year="2013Q2" area="City" value="1.94"></item>
+        <item year="2013Q3" area="City" value="2.09"></item>
+        <item year="2013Q4" area="City" value="1.95"></item>
+        <item year="2014Q1" area="City" value="1.15"></item>
+        <item year="2014Q2" area="City" value="1.6"></item>
+        <item year="2014Q3" area="City" value="2.35"></item>
+        <item year="2014Q4" area="City" value="1.87"></item>
+        <item year="2015Q1" area="City" value="1.68"></item>
+        <item year="2015Q2" area="City" value="1.62"></item>
+        <item year="2015Q3" area="City" value="1.91"></item>
+        <item year="2015Q4" area="City" value="1.54"></item>
+        <item year="2016Q1" area="City" value="1.39"></item>
+
+        <item year="2011Q1" area="West-End" value="0.67"></item>
+        <item year="2011Q2" area="West-End" value="0.85"></item>
+        <item year="2011Q3" area="West-End" value="0.65"></item>
+        <item year="2011Q4" area="West-End" value="1.1"></item>
+        <item year="2012Q1" area="West-End" value="0.81"></item>
+        <item year="2012Q2" area="West-End" value="0.55"></item>
+        <item year="2012Q3" area="West-End" value="0.62"></item>
+        <item year="2012Q4" area="West-End" value="0.64"></item>
+        <item year="2013Q1" area="West-End" value="1.4"></item>
+        <item year="2013Q2" area="West-End" value="0.6"></item>
+        <item year="2013Q3" area="West-End" value="0.78"></item>
+        <item year="2013Q4" area="West-End" value="0.68"></item>
+        <item year="2014Q1" area="West-End" value="0.75"></item>
+        <item year="2014Q2" area="West-End" value="0.9"></item>
+        <item year="2014Q3" area="West-End" value="0.98"></item>
+        <item year="2014Q4" area="West-End" value="0.64"></item>
+        <item year="2015Q1" area="West-End" value="0.94"></item>
+        <item year="2015Q2" area="West-End" value="0.91"></item>
+        <item year="2015Q3" area="West-End" value="0.81"></item>
+        <item year="2015Q4" area="West-End" value="1.02"></item>
+        <item year="2016Q1" area="West-End" value="0.89"></item>
+
+        <item year="2011Q1" area="Docklands" value="0"></item>
+        <item year="2011Q2" area="Docklands" value="0.06"></item>
+        <item year="2011Q3" area="Docklands" value="0.31"></item>
+        <item year="2011Q4" area="Docklands" value="0.09"></item>
+        <item year="2012Q1" area="Docklands" value="0.2"></item>
+        <item year="2012Q2" area="Docklands" value="0.1"></item>
+        <item year="2012Q3" area="Docklands" value="0.19"></item>
+        <item year="2012Q4" area="Docklands" value="0.08"></item>
+        <item year="2013Q1" area="Docklands" value="0.06"></item>
+        <item year="2013Q2" area="Docklands" value="0.16"></item>
+        <item year="2013Q3" area="Docklands" value="0.29"></item>
+        <item year="2013Q4" area="Docklands" value="0.09"></item>
+        <item year="2014Q1" area="Docklands" value="0.47"></item>
+        <item year="2014Q2" area="Docklands" value="0.17"></item>
+        <item year="2014Q3" area="Docklands" value="0.19"></item>
+        <item year="2014Q4" area="Docklands" value="0.36"></item>
+        <item year="2015Q1" area="Docklands" value="0.11"></item>
+        <item year="2015Q2" area="Docklands" value="1.26"></item>
+        <item year="2015Q3" area="Docklands" value="0.19"></item>
+        <item year="2015Q4" area="Docklands" value="0.3"></item>
+        <item year="2016Q1" area="Docklands" value="0.39"></item>
+    </items>
+</root>

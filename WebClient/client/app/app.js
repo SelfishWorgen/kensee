@@ -27,10 +27,10 @@ angular.module('kenseeApp', [
         templateUrl: 'app/articles/articles.html'
       })
 
-      .state('dashboard', {
-        url: '/NewsRoom',
-        controller: 'ArticlesCtrl',
-        templateUrl: 'app/articles/articles.html'
+      .state('kensee', {
+        url: '/Kensee',
+        controller: 'KenseeCtrl',
+        templateUrl: 'app/kensee/kensee.html'
       })
 
       .state('login', {

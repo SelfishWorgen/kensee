@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+.page-content.active {
+  display: block; }
+
+.tabs li.active {
+  background-color: #fff !important;
+  color: #444 !important; }
+
+.add-note {
+  width: 100%;
+  color: #fff;
+  padding: 6px;
+  font-size: 14px; }
+
+.form-control.report-note {
+  display: none;
+  width: 100%;
+  resize: none;
+  padding-right: 40px !important; }
+
+.fa.close-note {
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  right: 40px;
+  color: #444;
+  cursor: pointer; }
+
+.navbar .navbar-nav li {
+  border: none !important;
+  cursor: pointer; }
+
+.hello-user {
+  border: none !important; }
+
+  /*.navbar .navbar-nav > li{
+    //padding-top: 12px;
+    //padding-bottom: 11px;
+    height: 46px;
+    background-color: transparent;
+    font-size: 13px;
+    color: #ffffff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    padding: 12px 10px;
+    cursor: pointer;
+
+    a{
+      height: auto;
+      padding: 0;
+
+      &:hover{
+        background-color: transparent !important;
+      }
+    }
+
+    &:hover{
+      background-color: rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+    }
+
+
+  }
+
+  .nav{
+    .logout{
+      color: #fff;
+      padding: 0 10px;
+      background: #2f986f;
+      cursor: pointer;
+
+      &:hover{
+        background: #2c5976;
+      }
+    }
+  }*/
+.login-page .login-header {
+  color: #fff;
+  background: #3cb988;
+  height: 100px;
+  width: 100%; }
+  .login-page .login-header img {
+    height: 50px;
+    line-height: 100px;
+    margin: 25px 25px 25px 50px;
+    float: left; }
+  .login-page .login-header .logo-title {
+    font-size: 30px;
+    line-height: 100px; }
+
+.login-form {
+  max-width: 300px;
+  margin: 100px auto 0;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background: #f2f2f2;
+  padding: 20px 50px; }
+  .login-form p {
+    text-transform: uppercase;
+    color: #777;
+    font-size: 15px;
+    margin: 0 auto;
+    text-align: center; }
+    .login-form p.title {
+      color: #3cb988;
+      font-size: 21px; }
+  .login-form input {
+    width: 100%;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    padding: 10px;
+    box-sizing: border-box; }
+  .login-form button {
+    background: #3cb988;
+    color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 23px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    outline: none; }
+
+/*# sourceMappingURL=misc.css.map */

@@ -1,13 +1,18 @@
 'use strict';
 
 angular.module('kenseeApp')
-  .controller('NavbarCtrl', function ($scope, $location, $cookieStore, AuthenticationService, $state) {
+  .controller('NavbarCtrl', function ($scope, $location, $cookieStore, AuthenticationService, $state, $rootScope) {
     $scope.menu = [
-/*      {
-        'title': 'Dashboard',
-        'link': '/',
+      {
+        'title': 'Kensee',
+        'link': '/Kensee',
         'disabled': false
-      },*/
+      },
+      {
+        'title': 'Reports',
+        'link': '',
+        'disabled': false
+      },
       {
         'title': 'NewsRoom',
         'link': '/NewsRoom',
@@ -31,6 +36,17 @@ angular.module('kenseeApp')
 
     $scope.isActive = function(route) {
       return route === $location.path();
+    };
+    $scope.checkReports = function(link){
+      if(link == ''){
+        $rootScope.showReports = true;
+      }
+      if($location.path() == link){
+        $rootScope.showReports = false;
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      }
     };
     $scope.logout = function() {
       AuthenticationService.ClearCredentials();

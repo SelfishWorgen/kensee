@@ -12,11 +12,24 @@
   </div>
   <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
     <ul class="nav navbar-nav">
-      <li ng-if="loggedIn" ng-repeat="item in menu" ng-class="{active: isActive(item.link), disabledNavbarLink: item.disabled}">
+      <li ng-if="loggedIn"
+          ng-repeat="item in menu"
+          ng-class="{active: (isActive(item.link) && !$root.showReports) || (item.link == '' && $root.showReports), disabledNavbarLink: (item.link == '' && !$root.showPage) || $location.path() == '/NewsRoom', 'goReports': item.link == ''}"
+          ng-click="checkReports(item.link)"
+      >
         <a ng-href="{{item.link}}">{{item.title}}</a>
       </li>
+      <!--<li ng-if="loggedIn" ng-class="{active: isActive(item.link), disabledNavbarLink: item.disabled}">
+        <a href="/Kensee">Kensee</a>
+      </li>
+      <li ng-if="loggedIn" ng-class="{active: isActive(item.link), disabledNavbarLink: item.disabled}">
+        <a>Reports</a>
+      </li>
+      <li ng-if="loggedIn" ng-class="{active: isActive(item.link), disabledNavbarLink: item.disabled}">
+        <a href="/NewsRoom">NewsRoom</a>
+      </li>-->
       <li class="hello-user" ng-if="loggedIn">
-        <p>Hello {{username}}, <span class="logout"ng-click="logout()">Logout</span></p>
+        <p>Hello {{username}}, <span class="logout" ng-click="logout()">Logout</span></p>
       </li>
     </ul>
   </div>

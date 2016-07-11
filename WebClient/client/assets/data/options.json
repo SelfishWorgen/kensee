@@ -1,0 +1,327 @@
+{
+  "options": [
+    {
+      "value": "Canary Wharf",
+      "sub": "",
+      "district": "Tower Hamlets",
+      "title": "Canary Wharf"
+    },
+    {
+      "value": "Central London",
+      "sub": "",
+      "district": "",
+      "title": "Central London"
+    },{
+      "value": "City",
+      "sub": "",
+      "district": "City of London",
+      "title": "City"
+    },{
+      "value": "City",
+      "sub": "Aldgate",
+      "district": "City",
+      "title": "City - Aldgate"
+    },{
+      "value": "City",
+      "sub": "Aldgate/Whitechapel",
+      "district": "City",
+      "title": "City - Aldgate/Whitechapel"
+    },{
+      "value": "City",
+      "sub": "Central City Core",
+      "district": "City",
+      "title": "City - Central City Core"
+    },{
+      "value": "City",
+      "sub": "Chancery Lane",
+      "district": "City of London Corporation",
+      "title": "City - Chancery Lane"
+    },{
+      "value": "City",
+      "sub": "Chancery Lane/Midtown",
+      "district": "City of London Corporation",
+      "title": "City - Chancery Lane/Midtown"
+    },{
+      "value": "City",
+      "sub": "City Core",
+      "district": "",
+      "title": "City - City Core"
+    },{
+      "value": "City",
+      "sub": "City Eastern Fringe",
+      "district": "",
+      "title": "City - City Eastern Fringe"
+    },{
+      "value": "City",
+      "sub": "City Northern Fringe",
+      "district": "",
+      "title": "City - City Northern Fringe"
+    },{
+      "value": "City",
+      "sub": "Clerkenwell",
+      "district": "Islington",
+      "title": "City - Clerkenwell"
+    },{
+      "value": "City",
+      "sub": "Eastern City",
+      "district": "",
+      "title": "City - Eastern City"
+    },{
+      "value": "City",
+      "sub": "EC3",
+      "district": "City",
+      "title": "City - EC3"
+    },{
+      "value": "City",
+      "sub": "Farringdon",
+      "district": "Islington",
+      "title": "City - Farringdon"
+    },{
+      "value": "City",
+      "sub": "Holborn",
+      "district": "Camden",
+      "title": "City - Holborn"
+    },{
+      "value": "City",
+      "sub": "Insurance Sector",
+      "district": "",
+      "title": "City - Insurance Sector"
+    },{
+      "value": "City",
+      "sub": "London Bridge",
+      "district": "Southwark",
+      "title": "City - London Bridge"
+    },{
+      "value": "City",
+      "sub": "London Bridge/More London",
+      "district": "Southwark",
+      "title": "City - London Bridge/More London"
+    },{
+      "value": "City",
+      "sub": "Northern City",
+      "district": "",
+      "title": "City - Northern City"
+    },{
+      "value": "City",
+      "sub": "Shoreditch",
+      "district": "Hackney",
+      "title": "City - Shoreditch"
+    },{
+      "value": "City",
+      "sub": "Southwark",
+      "district": "Southwark",
+      "title": "City - Southwark"
+    },{
+      "value": "City",
+      "sub": "Waterloo",
+      "district": "Lambeth",
+      "title": "City - Waterloo"
+    },{
+      "value": "City",
+      "sub": "Waterloo/Bankside",
+      "district": "Lambeth",
+      "title": "City - Waterloo/Bankside"
+    },{
+      "value": "City",
+      "sub": "West City",
+      "district": "Lambeth",
+      "title": "City - West City"
+    },{
+      "value": "Docklands",
+      "sub": "",
+      "district": "",
+      "title": "Docklands"
+    },{
+      "value": "Docklands",
+      "sub": "Canary Wharf",
+      "district": "Tower Hamlets",
+      "title": "Docklands - Canary Wharf"
+    },{
+      "value": "Docklands",
+      "sub": "Docklands fringe",
+      "district": "",
+      "title": "Docklands - Docklands fringe"
+    },{
+      "value": "Docklands",
+      "sub": "Other Docklands",
+      "district": "",
+      "title": "Docklands - Other Docklands"
+    },{
+      "value": "Docklands",
+      "sub": "Stratford",
+      "district": "Newham",
+      "title": "Docklands - Stratford"
+    },{
+      "value": "Midtown",
+      "sub": "",
+      "district": "",
+      "title": "Midtown"
+    },{
+      "value": "Southbank",
+      "sub": "",
+      "district": "",
+      "title": "Southbank"
+    },{
+      "value": "West-End",
+      "sub": "",
+      "district": "",
+      "title": "West-End"
+    },{
+      "value": "West-End",
+      "sub": "Battersea",
+      "district": "Wandsworth",
+      "title": "West-End - Battersea"
+    },{
+      "value": "West-End",
+      "sub": "Belgravia/Knightsbridge",
+      "district": "Westminster",
+      "title": "West-End - Belgravia/Knightsbridge"
+    },{
+      "value": "West-End",
+      "sub": "Bloomsbury",
+      "district": "Camden",
+      "title": "West-End - Bloomsbury"
+    },{
+      "value": "West-End",
+      "sub": "Bloomsbury (WC1)",
+      "district": "Camden",
+      "title": "West-End - Bloomsbury (WC1)"
+    },{
+      "value": "West-End",
+      "sub": "Camden",
+      "district": "",
+      "title": "West-End - Camden"
+    },{
+      "value": "West-End",
+      "sub": "Chelsea",
+      "district": "Kensington and Chelsea",
+      "title": "West-End - Chelsea"
+    },{
+      "value": "West-End",
+      "sub": "Covent Garden",
+      "district": "Westminster",
+      "title": "West-End - Covent Garden"
+    },{
+      "value": "West-End",
+      "sub": "Covent Garden/Strand",
+      "district": "Westminster",
+      "title": "West-End - Covent Garden/Strand"
+    },{
+      "value": "West-End",
+      "sub": "Euston",
+      "district": "Camden",
+      "title": "West-End - Euston"
+    },{
+      "value": "West-End",
+      "sub": "Euston/King's Cross",
+      "district": "Camden",
+      "title": "West-End - Euston/King's Cross"
+    },{
+      "value": "West-End",
+      "sub": "Fitzrovia",
+      "district": "Camden",
+      "title": "West-End - Fitzrovia"
+    },{
+      "value": "West-End",
+      "sub": "Fulham",
+      "district": "Hammersmith and Fulham",
+      "title": "West-End - Fulham"
+    },{
+      "value": "West-End",
+      "sub": "Hammersmith",
+      "district": "Hammersmith and Fulham",
+      "title": "West-End - Hammersmith"
+    },{
+      "value": "West-End",
+      "sub": "Kensington",
+      "district": "Kensington and Chelsea",
+      "title": "West-End - Kensington"
+    },{
+      "value": "West-End",
+      "sub": "King's Cross",
+      "district": "",
+      "title": "West-End - King's Cross"
+    },{
+      "value": "West-End",
+      "sub": "Knightsbridge",
+      "district": "Westminster",
+      "title": "West-End - Knightsbridge"
+    },{
+      "value": "West-End",
+      "sub": "Marylebone",
+      "district": "Westminster",
+      "title": "West-End - Marylebone"
+    },{
+      "value": "West-End",
+      "sub": "Mayfair",
+      "district": "Westminster",
+      "title": "West-End - Mayfair"
+    },{
+      "value": "West-End",
+      "sub": "Mayfair/St James's",
+      "district": "Westminster",
+      "title": "West-End - Mayfair/St James's"
+    },{
+      "value": "West-End",
+      "sub": "M'bone/Fitzrovia",
+      "district": "",
+      "title": "West-End - M'bone/Fitzrovia"
+    },{
+      "value": "West-End",
+      "sub": "Noho",
+      "district": "Camden",
+      "title": "West-End - Noho"
+    },{
+      "value": "West-End",
+      "sub": "North of Oxford St",
+      "district": "Camden",
+      "title": "West-End - North of Oxford St"
+    },{
+      "value": "West-End",
+      "sub": "North of Oxford St/Marylebone",
+      "district": "Camden",
+      "title": "West-End - North of Oxford St/Marylebone"
+    },{
+      "value": "West-End",
+      "sub": "North Oxford/Fitzrovia",
+      "district": "Camden",
+      "title": "West-End - North Oxford/Fitzrovia"
+    },{
+      "value": "West-End",
+      "sub": "Paddington",
+      "district": "Westminster",
+      "title": "West-End - Paddington"
+    },{
+      "value": "West-End",
+      "sub": "Soho",
+      "district": "Westminster",
+      "title": "West-End - Soho"
+    },{
+      "value": "West-End",
+      "sub": "Soho/Covent Garden",
+      "district": "Westminster",
+      "title": "West-End - Soho/Covent Garden"
+    },{
+      "value": "West-End",
+      "sub": "St James's",
+      "district": "Westminster",
+      "title": "West-End - St James's"
+    },{
+      "value": "West-End",
+      "sub": "Vauxhall",
+      "district": "Lambeth",
+      "title": "West-End - Vauxhall"
+    },{
+      "value": "West-End",
+      "sub": "Vauxhall/Battersea",
+      "district": "Lambeth",
+      "title": "West-End - Vauxhall/Battersea"
+    },{
+      "value": "West-End",
+      "sub": "Victoria",
+      "district": "Westminster",
+      "title": "West-End - Victoria"
+    }
+  ],
+  "type": "Office,Retail,Multifamily,Industrial,Land,Leisure,Healthcare"
+}
